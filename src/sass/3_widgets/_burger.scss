@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
+
   div {
     display: block;
     width: 90%;
@@ -16,6 +17,7 @@
     margin-top: 6px;
     border-radius: 4px;
   }
+
   @include respond-to(medium) {
     display: none;
   }

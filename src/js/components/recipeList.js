@@ -1,9 +1,11 @@
 import RecipeCard from "./recipeCard";
 
 class RecipeList {
-  init() {
+  constructor() {
     this.domCache();
-    this.getRecipeList();
+  }
+  init() {
+    this.show()
   }
 
   domCache() {
@@ -15,7 +17,6 @@ class RecipeList {
 
   getRecipeList() {
     ///show the component then call the listing api
-    this.show();
     this.recipeListingContainer.innerHTML = "<span class='loader'></span>";
     const listRequest = new Request("http://localhost:3001/recipes", {
       method: "GET",
@@ -44,14 +45,14 @@ class RecipeList {
           image: record.images.medium,
           title: record.title,
           description: record.description,
-         id: record.uuid
+          id: record.uuid
         };
       })
       .forEach(data => {
         this.card = new RecipeCard(
           data.image,
           data.title,
-          data.description,       
+          data.description,
           data.id
         );
         return docuFrag.appendChild(this.card.createCard());
@@ -59,12 +60,14 @@ class RecipeList {
     this.recipeListingContainer.appendChild(docuFrag);
   }
 
+
   //reserve for general events
   hide() {
     this.recipeListing.style.setProperty("display", "none");
   }
   show() {
     this.recipeListing.style.setProperty("display", "block");
+    this.getRecipeList();
   }
 }
 

@@ -1,8 +1,9 @@
-import SiteEvent from "../controller/events";
+import RecipeList from './recipeList'
 
 class SiteNaviActions {
   constructor() {
-    this.events = new SiteEvent();
+    this.recipeList = new RecipeList;
+    this.evtComponentDisplay = this.evtComponentDisplay.bind(this)
   }
 
   init() {
@@ -12,12 +13,25 @@ class SiteNaviActions {
 
   domCache() {
     this.naviButtons = document.querySelectorAll(".site-nav-act");
+    this.naviBurger = document.querySelector('.burger')
   }
 
   assignEvents() {
     this.naviButtons.forEach(btn => {
-      btn.addEventListener("click", this.events.trigger().siteNavEvents);
+      btn.addEventListener("click", this.evtComponentDisplay);
     });
+  }
+
+  evtComponentDisplay(e) {
+    const target = e.target.getAttribute('data-nav-role');
+    switch (target) {
+      case "recipe":
+        this.recipeList.show();
+        break;
+      case "specials":
+        this.recipeList.hide();
+        break;
+    }
   }
 }
 

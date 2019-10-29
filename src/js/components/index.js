@@ -2,16 +2,19 @@
 
 import SiteNavi from "./siteNavi";
 import RecipeList from "./recipeList";
+import RecipeManage from './recipeManage'
+
 
 class ComponentMaster {
   init() {
     //initialize each class of components
     [
-      (this.SiteNavi = new SiteNavi()),
-      (this.RecipeList = new RecipeList())
-    ].forEach(comp => {
-      comp.init();
-    });
+      this.siteNavi = new SiteNavi,
+      this.recipeList = new RecipeList,
+      this.RecipeManage = new RecipeManage
+    ].forEach((instance) => {
+      instance.init()
+    })
   }
 }
 
