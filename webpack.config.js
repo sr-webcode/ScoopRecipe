@@ -1,8 +1,9 @@
 const isDevelopment = process.env.NODE_ENV !== "production",
-  path = require('path'),
-  miniCSS = require('mini-css-extract-plugin'),
-  htmlFile = require('html-webpack-plugin'),
-  { CleanWebpackPlugin } = require('clean-webpack-plugin')
+  path = require("path"),
+  miniCSS = require("mini-css-extract-plugin"),
+  htmlFile = require("html-webpack-plugin"),
+  { CleanWebpackPlugin } = require("clean-webpack-plugin"),
+  filesCopy = require("copy-webpack-plugin");
 
 //begin config
 
@@ -14,7 +15,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
   devServer: {
-    port: 2020,
+    port: 2020
   },
   module: {
     rules: [
@@ -38,15 +39,14 @@ module.exports = {
             options: {
               publicPath: "../"
             }
-          }
-          ,
+          },
           {
             loader: "css-loader"
           },
           {
             loader: "sass-loader",
             options: {
-              implementation: require('sass')
+              implementation: require("sass")
             }
           }
         ]
@@ -54,6 +54,12 @@ module.exports = {
     ]
   },
   plugins: [
+    new filesCopy([
+      {
+        from: path.resolve(__dirname, "./src/assets"),
+        to: path.resolve(__dirname, "dist")
+      }
+    ]),
     new htmlFile({
       template: path.resolve(__dirname, "./src/index.html"),
       filename: "index.html"
@@ -63,4 +69,4 @@ module.exports = {
     }),
     new CleanWebpackPlugin()
   ]
-}
+};

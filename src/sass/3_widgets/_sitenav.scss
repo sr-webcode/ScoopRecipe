@@ -1,0 +1,37 @@
+.site-nav {
+  flex: 1;
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  ul,
+  li {
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    margin-right: -5px;
+  }
+
+  @include respond-to(medium) {
+    display: flex;
+  }
+}
+
+.site-nav-act {
+  cursor: pointer;
+  padding: 10px;
+  color: #fefefe;
+  text-decoration: none;
+  transition: color 0.4s ease;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  &:hover {
+    color: goldenrod;
+  }
+}

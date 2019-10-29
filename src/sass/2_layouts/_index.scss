@@ -1,0 +1,13 @@
+%alternatingComponent {
+  min-height: 400px;
+  margin-top: 50px;
+  display: none;
+  position: relative;
+  width: 100%;
+  background-color: #F3F3F3;
+}
+
+@import "./header.scss";
+@import "./components/recipeSearch.scss";
+@import "./components/recipeListing";
+@import "./components/recipeCard";

@@ -1,0 +1,10 @@
+.general-cta {
+  cursor: pointer;
+  background-color: rgb(233, 168, 4);
+  color: rgb(0, 11, 34);
+  letter-spacing: 1px;
+  font-weight: bold;
+  &:hover {
+    background-color: rgba(173, 126, 5, 0.9);
+  }
+}

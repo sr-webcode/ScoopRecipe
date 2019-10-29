@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-
-<body>
-  <header class="site-header">
-    <div class="site-branding">
+  <body>
+    <header class="site-header">
       <div class="container">
-        <h1>Recipio</h1>
-      </div>
-    </div>
-    <nav class="site-nav">
-      <div class="container">
-        <ul>
-          <li><a class='site-nav-act' data-nav-role="recipe">Recipes</a></li>
-          <li><a class='site-nav-act' data-nav-role="specials">Specials</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+        <div class="site-branding">
+          <h1>SCOOP</h1>
+        </div>
 
-  <main class="main">
-    <section class="section-recipe"></section>
-    <section class="section-specials"></section>
-    <section class="section-recipe-profile"></section>
-  </main>
+        <nav class="site-nav">
+          <ul>
+            <li><a class="site-nav-act" data-nav-role="recipe">Recipes</a></li>
+            <li>
+              <a class="site-nav-act" data-nav-role="specials">Specials</a>
+            </li>
+          </ul>
+        </nav>
 
-  <!-- <footer class="site-footer">
+        <span class="burger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </span>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="recipe-search">
+        <div class="container">
+          <input
+            type="text"
+            name="recipe-search-input"
+            class="recipe-search-child"
+            placeholder="Type recipe name..."
+          />
+          <button class="recipe-search-child">Search</button>
+        </div>
+      </section>
+
+      <section class="recipe-listing">
+        <div class="container"></div>
+      </section>
+
+      <section class="specials"></section>
+      <section class="recipe-profile"></section>
+    </main>
+
+    <!-- <footer class="site-footer">
     <div class="container">
     </div>
   </footer> -->
-
-</body>
-
+  </body>
 </html>

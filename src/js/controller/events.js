@@ -1,3 +1,5 @@
+//global events
+
 class SiteEvent {
   trigger() {
     return {

@@ -1,8 +1,8 @@
-import SiteEvent from '../controller/events'
+import SiteEvent from "../controller/events";
 
 class SiteNaviActions {
   constructor() {
-    this.events = new SiteEvent;
+    this.events = new SiteEvent();
   }
 
   init() {
@@ -11,16 +11,14 @@ class SiteNaviActions {
   }
 
   domCache() {
-    this.naviButtons = document.querySelectorAll('.site-nav-act');
+    this.naviButtons = document.querySelectorAll(".site-nav-act");
   }
 
   assignEvents() {
-    this.naviButtons.forEach((btn) => {
-      btn.addEventListener('click', this.events.trigger().siteNavEvents)
-    })
+    this.naviButtons.forEach(btn => {
+      btn.addEventListener("click", this.events.trigger().siteNavEvents);
+    });
   }
 }
-
-
 
 export default SiteNaviActions;

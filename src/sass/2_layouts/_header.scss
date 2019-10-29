@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
+
+.site-header {
+  position: relative;
+  background-color: rgb(0, 11, 34);
+  color: #fefefe;
+  .container {
+    display: flex;
+    min-height: 70px;
+  }
+}
+.site-branding {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  h1 {
+    font-size: 40px;
+    color: rgb(233, 168, 4);
+    font-family: "Luckiest Guy", Arial, Helvetica, sans-serif;
+    position: relative;
+    &::after{
+      position: absolute;
+     display: block;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      text-align: center;
+      content: 'recipes & ingredients';
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      margin-bottom: -5px;
+    
+    }
+  }
+}

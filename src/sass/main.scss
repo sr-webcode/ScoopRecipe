@@ -1,4 +1,5 @@
 //import individual styles here
-@import "./0_base/base.scss";
+@import "./0_base/base";
+@import "./1_mixin/mixin";
+@import "./3_widgets/index";
 @import "./2_layouts/index.scss";
-@import "./3_widgets/index.scss"

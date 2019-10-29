@@ -1,0 +1,22 @@
+.loader {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinner 0.4s linear infinite;
+  border: 3px solid rgb(233, 168, 4);
+  border-bottom: 3px solid transparent;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+@keyframes spinner {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

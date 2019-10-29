@@ -4,9 +4,10 @@
   "description": "API-based frontend skill test",
   "main": "index.js",
   "scripts": {
-    "live": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
+    "live": "concurrently \"npm run client\" \"npm run api\" ",
+    "client": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "start:api": "json-server --watch ./server/data.json --id uuid --port 3001"
+    "api": "json-server --watch ./server/data.json --id uuid --port 3001"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.0.0",
+    "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
