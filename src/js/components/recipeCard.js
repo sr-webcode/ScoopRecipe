@@ -1,5 +1,3 @@
-import RecipeProfile from './recipeProfile'
-
 class RecipeCard {
 
   constructor(image, title, description, id) {
@@ -33,6 +31,8 @@ class RecipeCard {
     cardImage.style.setProperty("background-image", `url(${this.image})`);
     title.textContent = this.title;
     description.textContent = this.description;
+    card.setAttribute('data-id', this.id);
+
 
     //append each element through its respective parent
     [title, description].forEach(child => {
@@ -43,10 +43,7 @@ class RecipeCard {
       card.appendChild(child);
     });
 
-    //attach an event to the card to show profile later
-    this.showProfile(card, this.id)
-
-    return card;
+     return card;
   }
 
 }

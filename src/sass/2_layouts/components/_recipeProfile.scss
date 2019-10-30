@@ -1,3 +1,49 @@
 .recipe-profile {
   @extend %alternatingComponent;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.recipe-profile-wrapper {
+  display: flex;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 4px rgba(20, 20, 20, 0.3);
+  flex-flow: row nowrap;
+  min-height: 400px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.recipe-profile-image {
+  flex: 1;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.recipe-profile-caption {
+  flex: 1;
+  padding: 10px;
+  line-height: 1.2;
+  h1,
+  h4 {
+    color: rgb(0, 11, 34);
+  }
+  h4 {
+    margin-top: 12px;
+    font-style: italic;
+    font-weight: normal;
+  }
+  p {
+    margin-top: 5px;
+  }
+}
+
+.recipe-profile-ingredients {
+  list-style: circle;
+  margin-top: 10px;
+
+  li {
+    margin-left: 30px;
+  } 
 }
