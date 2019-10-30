@@ -1,4 +1,23 @@
 .recipe-manage {
   @extend %alternatingComponent;
+}
+
+
+.recipe-manage-listing {
+  display: block;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #FAFAFA;
+  box-shadow: 0 0 4px rgba(20, 20, 20, 0.3);
+
+  h3 {
+    background-color: #000B22;
+    color: #E9A804;
+    padding: 10px 20px;
+  }
+
+  min-height: 400px;
 
 }

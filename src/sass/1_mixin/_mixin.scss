@@ -1,13 +1,10 @@
-$breakPoints: (
-  medium: 750px,
-  large: 900px
-);
+$breakPoints: (medium: 750px,
+  large: 900px);
 
 @mixin respond-to($size) {
   $current: map-get($breakPoints, $size);
-  @media only screen and(
-      min-width: $current
-    ) {
+
+  @media only screen and(min-width: $current) {
     @content;
   }
 }

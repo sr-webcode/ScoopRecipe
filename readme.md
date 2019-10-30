@@ -5,7 +5,6 @@
 For this javascript project we've provided a recipe API with two endpoints. With this API you'll need to complete the following objectives.
 
 
-- Ingredients with a matching `ingredientId` listed in the specials response should also show the special `title`, `type` and `text` under the ingredient name
 - _Bonus:_ Create a view to add and update recipes or specials. Image upload not required. Both endpoints support GET, POST and PATCH.
 
 This project includes a API server (json-server) for you to use. To install and run, use the commands below:

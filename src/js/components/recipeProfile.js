@@ -1,5 +1,6 @@
 import RecipeSpecials from "./recipeSpecials";
 
+
 class RecipeProfile {
   constructor() {
     this.domCache();
@@ -60,42 +61,89 @@ class RecipeProfile {
   }
 
   extractInsRecipe(data) {
-    const { title, description, ingredients } = data[0];
+
+    const { title, description, ingredients, directions } = data[0];
+
     const docuFrag = document.createDocumentFragment(),
       caption = document.createElement("div"),
       recipeTitle = document.createElement("h1"),
       recipeIngridTitle = document.createElement("h4"),
       recipeIngredientMaster = document.createElement("ul"),
-      recipeDesc = document.createElement("p");
+      recipeDesc = document.createElement("p"),
+      recipeStepsTitle = document.createElement('h4'),
+      recipeSteps = document.createElement('ul');
+
 
     //set class names
     caption.classList.add("recipe-profile-caption");
     recipeIngredientMaster.classList.add("recipe-profile-ingredients");
+    recipeSteps.classList.add('recipe-profile-steps');
+    recipeIngridTitle.classList.add('recipe-marker')
+    recipeStepsTitle.classList.add('recipe-marker')
 
-    //set data
+
+
+    //set data for elems
     recipeTitle.textContent = title;
     recipeDesc.textContent = description;
     recipeIngridTitle.textContent = "Ingredients:";
+    recipeStepsTitle.textContent = "Instructions:"
 
-    //to be used later for adding specials tag
-
-    ///continue working here to get specials match
-
+    //iterate through igredients
     ingredients.forEach(ingredient => {
       const item = document.createElement("li");
       const { uuid, amount, measurement, name } = ingredient;
-      item.textContent = `${amount ? amount : ""} ${
-        measurement ? measurement : "-"
-      } ${name}`;
+      const matchList = this.specialsList.filter((item) => {
+        return item.ingredientId === uuid;
+      })
+
+      if (matchList.length > 0) {
+        const specialsTag = document.createElement('ul');
+        specialsTag.classList.add('recipe-promo-code');
+
+        const { type, title, text } = matchList[0];
+        [title, type, text].forEach((promo) => {
+          const promoLi = document.createElement('li');
+          promoLi.innerHTML = promo;
+          specialsTag.appendChild(promoLi);
+        })
+
+        item.textContent = `${amount ? amount : ""} ${
+          measurement ? measurement : "-"} ${name}`;
+
+        item.appendChild(specialsTag);
+
+      } else {
+        item.textContent = `${amount ? amount : ""} ${
+          measurement ? measurement : "-"
+          } ${name}`;
+      }
+
       recipeIngredientMaster.appendChild(item);
     });
+
+    //iterate through steps
+    directions.forEach((step) => {
+      const { instructions, optional } = step;
+      const li = document.createElement('li');
+      if (optional) {
+        li.textContent = instructions + '(optional)';
+        recipeSteps.appendChild(li)
+        return;
+      }
+      li.textContent = instructions;
+      recipeSteps.appendChild(li)
+    });
+
 
     //append each child to parent
     [
       recipeTitle,
       recipeDesc,
       recipeIngridTitle,
-      recipeIngredientMaster
+      recipeIngredientMaster,
+      recipeStepsTitle,
+      recipeSteps
     ].forEach(child => {
       docuFrag.appendChild(child);
     });

@@ -1,69 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <header class="site-header">
-      <div class="container">
-        <div class="site-branding">
-          <h1>SCOOP</h1>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
 
-        <nav class="site-nav">
-          <ul>
-            <li><a class="site-nav-act" data-nav-role="recipe">Recipes</a></li>
-            <li>
-              <a class="site-nav-act" data-nav-role="manage">Manage Recipes</a>
-            </li>
-          </ul>
-        </nav>
+<body>
 
-        <span class="burger">
-          <div></div>
-          <div></div>
-          <div></div>
-        </span>
+  <div class="mobile-menu">
+    <span class="close-btn">X</span>
+    <ul>
+      <li><a data-nav-role="recipe">Recipes</a></li>
+      <li>
+        <a data-nav-role="manage">Manage Recipes</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <header class="site-header">
+    <div class="container">
+      <div class="site-branding">
+        <h1>SCOOP</h1>
       </div>
-    </header>
 
-    <main class="main">
-      <section class="recipe-search">
-        <div class="container">
-          <input
-            type="text"
-            name="recipe-search-input"
-            class="recipe-search-child"
-            placeholder="Type recipe name..."
-          />
-          <button class="recipe-search-child">Search</button>
-        </div>
-      </section>
+      <nav class="site-nav">
+        <ul>
+          <li><a class="site-nav-act" data-nav-role="recipe">Recipes</a></li>
+          <li>
+            <a class="site-nav-act" data-nav-role="manage">Manage Recipes</a>
+          </li>
+        </ul>
+      </nav>
 
-      <section class="recipe-listing">
-        <div class="container"></div>
-      </section>
+      <span class="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </span>
+    </div>
+  </header>
 
-      <section class="recipe-profile">
-        <div class="container">
-          <div class="recipe-profile-wrapper"></div>
-        </div>
-      </section>
+  <main class="main">
 
-      <section class="recipe-manage">
-        <div class="container">
-          <h2>the recipe manage compoenent</h2>
-        </div>
-      </section>
-    </main>
+    <section class="recipe-search">
+      <div class="container">
+        <input type="text" name="recipe-search-input" class="recipe-search-child" id="txtSearch"
+          placeholder="Type recipe title or name ..." />
+        <button class="recipe-search-child" id="btnSearch">Search</button>
+      </div>
+    </section>
 
-    <!-- <footer class="site-footer">
+    <section class="recipe-listing">
+      <div class="container"></div>
+    </section>
+
+    <section class="recipe-profile">
+      <div class="container">
+        <div class="recipe-profile-wrapper"></div>
+      </div>
+    </section>
+
+    <section class="recipe-manage">
+      <div class="container">
+      </div>
+    </section>
+  </main>
+
+  <!-- <footer class="site-footer">
     <div class="container">
     </div>
   </footer> -->
-  </body>
+
+</body>
+
 </html>

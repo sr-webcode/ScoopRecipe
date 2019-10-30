@@ -15,9 +15,11 @@ class RecipeList {
     );
   }
 
-  getRecipeList() {
+  getRecipeList(title) {
+
     ///show the component then call the listing api
     this.recipeListingContainer.innerHTML = "<span class='loader'></span>";
+
     const listRequest = new Request("http://localhost:3001/recipes", {
       method: "GET",
       mode: "cors"
@@ -29,7 +31,20 @@ class RecipeList {
         return result.json();
       })
       .then(data => {
-        this.extractList(data);
+
+        //no search params
+        if (!title) return this.extractList(data);
+
+        //search by title
+        const filterData = data.filter((recipe) => {
+          return recipe.title.toLowerCase().indexOf(title) != -1;
+        })
+
+        if (filterData.length > 0) return this.extractList(filterData)
+
+        //literally no match
+        this.recipeListingContainer.textContent = "the search yielded no results..."
+
       })
       .catch(err => {
         console.log(err);
@@ -65,9 +80,9 @@ class RecipeList {
   hide() {
     this.recipeListing.style.setProperty("display", "none");
   }
-  show() {
+  show(val = false) {
     this.recipeListing.style.setProperty("display", "block");
-    this.getRecipeList();
+    this.getRecipeList(val);
   }
 }
 
