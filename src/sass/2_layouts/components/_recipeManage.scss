@@ -1,7 +1,9 @@
 .recipe-manage {
   @extend %alternatingComponent;
+  .container {
+    max-width: 700px;
+  }
 }
-
 
 .recipe-manage-listing {
   display: block;
@@ -9,15 +11,60 @@
   min-height: 400px;
   overflow: hidden;
   border-radius: 4px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   box-shadow: 0 0 4px rgba(20, 20, 20, 0.3);
-
-  h3 {
-    background-color: #000B22;
-    color: #E9A804;
-    padding: 10px 20px;
-  }
-
   min-height: 400px;
 
+  h3 {
+    background-color: #000b22;
+    color: #e9a804;
+    padding: 10px 20px;
+  }
+}
+
+.recipe-manage-menu {
+  list-style: none;
+  display: flex;
+  padding: 14px;
+  flex-flow: column wrap;
+
+  li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    &:nth-of-type(odd) {
+      background-color: rgb(241, 241, 241);
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+      margin-left: 4px;
+    }
+    h4 {
+      margin-left: 10px;
+      flex: 1;
+      font-style: italic;
+    }
+  }
+}
+
+.btn-group {
+  position: relative;
+  span {
+    cursor: pointer;
+    margin: 0 8px;
+    background-color: #e9a804;
+    color: #000b22;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: bold;
+    &:hover {
+      background-color: #000b22;
+      color: #e9a804;
+    }
+  }
 }
