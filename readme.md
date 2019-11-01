@@ -1,7 +1,7 @@
 # Scoop Recipe App
 
 ## About
-a simple recipe web app that allows you to view, edit, update and delete exisitng recipes.
+a simple food recipe web app that allows you to view, edit, update and delete exisitng recipes.
 
 ## Screenshots
 
