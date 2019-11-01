@@ -483,42 +483,36 @@
     },
     {
       "title": "Chicken Tortilla Wraps",
-      "description": "Breakfast in a \"rush\".",
-      "prepTime": 10,
-      "cookTime": 5,
+      "description": "Breakfast in a \"rush\" tortilla.",
+      "prepTime": 5,
+      "cookTime": 10,
       "servings": 4,
       "ingredients": [
         {
-          "uuid": "null",
-          "name": "Chicken (steam)",
+          "uuid": null,
+          "name": "Chicken",
           "amount": 1,
-          "measurement": "1/2 Breast Part"
+          "measurement": "quarter"
         },
         {
-          "uuid": "null",
+          "uuid": null,
           "name": "Tortilla Wraps",
-          "amount": 4,
-          "measurement": "Pieces"
-        },
-        {
-          "uuid": "null",
-          "name": "Olive Oil",
-          "amount": 1,
-          "measurement": "Bottle"
+          "amount": 2,
+          "measurement": "Slice"
         }
       ],
       "directions": [
         {
-          "instructions": "Place Cooked Chicken in Tortilla Wrap",
+          "instructions": "Place Chicken inside tortilla",
           "optional": false
         },
         {
-          "instructions": "Fold Tortilla Wrap evenly to avoid messy content spilling.",
-          "optional": false
-        },
-        {
-          "instructions": "Enjoy and eat with your friends.",
+          "instructions": "Apply flavor paste inside tortilla",
           "optional": true
+        },
+        {
+          "instructions": "eat with your friends",
+          "optional": false
         }
       ],
       "images": {
@@ -526,7 +520,7 @@
         "medium": "/img/temp_medium.jpg",
         "small": "/img/temp_small.jpg"
       },
-      "uuid": "FtC04mN"
+      "uuid": "p3a3lLO"
     }
   ],
   "specials": [

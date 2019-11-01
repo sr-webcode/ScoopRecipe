@@ -7,10 +7,7 @@ import CrudEvent from "./crud";
 
 class CentralEvents {
   constructor() {
-    //declare initial constructor || data
     this.modalStatus = false;
-
-    //bind nested events
     this.toggleViews = this.toggleViews.bind(this);
     this.viewRecipeProfile = this.viewRecipeProfile.bind(this);
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
@@ -19,15 +16,11 @@ class CentralEvents {
     this.toggleTempViews = this.toggleTempViews.bind(this);
     this.ingRowsAdd = this.ingRowsAdd.bind(this);
     this.stepRowsAdd = this.stepRowsAdd.bind(this)
-
-
-    //modal fn
     this.modalResponse = this.modalResponse.bind(this);
     this.modalCurrentAction = null;
     this.modalCurrentRecord = null;
     this.modalCategory = null;
     this.resetTempViews = this.resetTempViews.bind(this);
-
   }
 
   init() {
@@ -128,14 +121,14 @@ class CentralEvents {
 
     switch (target) {
       case "recipe":
-        //enable search
+
         this.recipeSearch.style.setProperty("display", "block");
         this.resetViews();
         this.resetTempViews();
         this.recipeList.show();
         break;
       case "manage":
-        //hide general search
+
         this.recipeSearch.style.setProperty("display", "none");
         this.resetViews();
         this.resetTempViews();
@@ -169,27 +162,21 @@ class CentralEvents {
   searchRecipe() {
     const value = this.txtSearch.value;
     if (!value.trim()) return;
-
-    //search specific
     this.recipeProfile.hide();
     this.recipeList.show(value);
   }
 
   modalResponse(e) {
-    // console.log(this.modalCurrentRecord, this.modalCurrentAction);
     const response = e.currentTarget.textContent.toLowerCase();
 
     switch (response) {
       case "yes":
-        //get instance of crud events
-
         this.crudEvent.init(
           this.modalCurrentAction,
           this.modalCurrentRecord,
           this.modalCategory
         );
         this.recipeModal.hide();
-
         break;
       case "no":
         this.recipeModal.hide();
@@ -289,7 +276,7 @@ class CentralEvents {
 
       const listMaster = e.target.parentElement.querySelector('.record-temp-master');
 
-      //add list
+
       const inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
@@ -323,11 +310,7 @@ class CentralEvents {
     const spanTarget = e.target.getAttribute('data-role');
 
     if (spanTarget) {
-
       const listMaster = e.target.parentElement.querySelector('.record-temp-master');
-
-      //add list
-
       const insList = document.createElement("li"),
         insText = document.createElement("input"),
         insOptional = document.createElement("select"),

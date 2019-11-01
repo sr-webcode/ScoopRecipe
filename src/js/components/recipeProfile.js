@@ -43,16 +43,13 @@ class RecipeProfile {
     const docuFrag = document.createDocumentFragment(),
       profileImage = document.createElement("div");
 
-    //separate extraction for caption data
+
     const profileCaption = this.extractInsRecipe(record);
 
-    //set specific class names
-    profileImage.classList.add("recipe-profile-image");
 
-    //set data
+    profileImage.classList.add("recipe-profile-image");
     profileImage.style.setProperty("background-image", `url(${images.full})`);
 
-    //append all to document fragment
     [profileImage, profileCaption].forEach(child => {
       docuFrag.appendChild(child);
     });
@@ -78,8 +75,6 @@ class RecipeProfile {
       tatBox = document.createElement('div');
 
 
-
-    //set class names
     caption.classList.add("recipe-profile-caption");
     recipeIngredientMaster.classList.add("recipe-profile-ingredients");
     recipeSteps.classList.add('recipe-profile-steps');
@@ -91,14 +86,12 @@ class RecipeProfile {
     tatBox.classList.add('recipe-tat-box');
 
 
-    //set data for elems
     recipeTitle.textContent = title;
     recipeDesc.textContent = description;
     recipeIngridTitle.textContent = "Ingredients:";
     recipeStepsTitle.textContent = "Instructions:"
 
 
-    //iterate through igredients
     ingredients.forEach(ingredient => {
       const item = document.createElement("li");
       const { uuid, amount, measurement, name } = ingredient;
@@ -131,7 +124,6 @@ class RecipeProfile {
       recipeIngredientMaster.appendChild(item);
     });
 
-    //iterate through steps
     directions.forEach((step) => {
       const { instructions, optional } = step;
       const li = document.createElement('li');
@@ -145,12 +137,12 @@ class RecipeProfile {
     });
 
 
-    //append tat box items
+
     [prepTimeInfo, cookTimeInfo, serveInfo].forEach((child) => {
       tatBox.appendChild(child);
     });
 
-    //append each child to parent
+
     [
       recipeTitle,
       recipeDesc,
@@ -169,12 +161,10 @@ class RecipeProfile {
   }
 
   show(id) {
-    //load recipe specials first
     this.recipeSpecials
       .checkSpecials()
       .then(list => {
         this.specialsList = list;
-        //proceed rendering
         this.resetProfile();
         this.recipeProfile.style.setProperty("display", "block");
         this.requestProfile(id);

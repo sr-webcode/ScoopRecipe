@@ -1,4 +1,3 @@
-//asset level imports
 import "../sass/main.scss";
 import ComponentMaster from "./components/index";
 import CentralEvents from "./events/central";
@@ -16,6 +15,6 @@ class MainApp {
   }
 }
 
-//intialize application
+
 const appInstance = new MainApp();
 appInstance.start();

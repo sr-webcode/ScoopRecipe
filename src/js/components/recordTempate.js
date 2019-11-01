@@ -1,4 +1,3 @@
-///this is where we interchanged add and edit records!
 
 class RecordTemplate {
 

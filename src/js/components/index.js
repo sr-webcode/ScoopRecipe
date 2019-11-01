@@ -1,11 +1,9 @@
-//import each component
 import RecipeList from "./recipeList";
 import RecipeManage from "./recipeManage";
 import RecipeModal from "./recipeModal";
 import RecordTemplate from "./recordTempate";
 class ComponentMaster {
   init() {
-    //initialize each class of components
     [
       (this.recipeList = new RecipeList()),
       (this.recipeManage = new RecipeManage()),
