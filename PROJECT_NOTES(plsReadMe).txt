@@ -9,6 +9,11 @@
     -- used class base approach to building components and events
     -- used sass to create my own stylesheet specs
     -- made it so the app is responsive on specific breakpoints
+ 
+ The following has not been implemented yet:
+     -- form validation on crud operation
+     -- lazy loading on images   
+ 
     
  I created a repo on my github profile so you can go ahead and clone it
  Repo Link:https://github.com/sr-webcode/Scoop.git
