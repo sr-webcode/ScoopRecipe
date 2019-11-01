@@ -2,16 +2,16 @@
   "recipes": [
     {
       "uuid": "e80ea521-4d42-48fe-a7a6-ac8952bc0de4",
-      "title": "Queso Brat Scramble",
-      "description": "A delicious breakfast, fit for a crowd.",
+      "title": "Queso Brat Scrambles",
+      "description": "A delicious breakfast, fit for a crowds.",
       "images": {
         "full": "/img/queso_brat_scramble.jpg",
         "medium": "/img/queso_brat_scramble--m.jpg",
         "small": "/img/queso_brat_scramble--s.jpg"
       },
-      "servings": 5,
-      "prepTime": 10,
-      "cookTime": 20,
+      "servings": 4,
+      "prepTime": 5,
+      "cookTime": 35,
       "postDate": "01/20/2018 05:15:03 PM",
       "editDate": "02/05/2018 11:56:29 PM",
       "ingredients": [
@@ -231,7 +231,7 @@
     {
       "uuid": "3555aec3-47e1-44d4-b8f2-607aad5cee67",
       "title": "Kielbasa Skillet",
-      "description": "A polish delicacy.",
+      "description": "A polish wonderful delicacy.",
       "images": {
         "full": "/img/kielbasa_skillet.jpg",
         "medium": "/img/kielbasa_skillet--m.jpg",
@@ -320,7 +320,7 @@
     {
       "uuid": "3555aec3-47e1-44d4-b8f2-607aad5cee69",
       "title": "Brussel Chips",
-      "description": "Tasty, crispy, spicy and healthy!",
+      "description": "Tasty, crispy, spicy and super healthy!",
       "images": {
         "full": "/img/brussel_chips.jpg",
         "medium": "/img/brussel_chips--m.jpg",

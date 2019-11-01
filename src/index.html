@@ -66,17 +66,42 @@
       </section>
 
       <div class="recipe-overlay">
-          <div class="recipe-modal">
-              <p class="recipe-modal-text"></p>
-              <div class="recipe-modal-act-group">
-                <span class="recipe-modal-act">Yes</span>
-                <span class="recipe-modal-act">No</span>
-              </div>
-            </div>
+        <div class="recipe-modal">
+          <p class="recipe-modal-text"></p>
+          <div class="recipe-modal-act-group">
+            <span class="recipe-modal-act">Yes</span>
+            <span class="recipe-modal-act">No</span>
+          </div>
+        </div>
       </div>
-    
+
       <section class="recipe-manage">
         <div class="container"></div>
+      </section>
+
+      <section class="record-template">
+        <div class="container">
+          <h2 class="record-template-name"></h2>
+          <div class="record-template-wrapper">
+          
+            <ul class="template-controls">
+              <li data-temp-role="init" class="temp-item">Basic Info</li>
+              <li data-temp-role="ing" class="temp-item">Ingredients</li>
+              <li data-temp-role="steps" class="temp-item">Steps</li>
+            </ul>
+
+            <div data-temp-role="init" class="record-template-panel">
+               </div>
+            <div data-temp-role="ing" class="record-template-panel">
+              ingredients
+            </div>
+            <div data-temp-role="steps" class="record-template-panel">
+              steps
+            </div>
+            <span data-out-role="back" class="record-template-btn">Back</span>
+            <span data-crud-role class="record-template-btn"></span>
+          </div>
+        </div>
       </section>
     </main>
 

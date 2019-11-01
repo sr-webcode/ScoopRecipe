@@ -76,7 +76,7 @@ class RecipeManage {
       currentImage.setAttribute("src", `${item.images.small}`);
       listItem.setAttribute("data-title", item.title);
       listItem.setAttribute("data-id", item.uuid),
-        listItem.setAttribute("data-category", "recipes");
+      listItem.setAttribute("data-category", "recipes");
 
       [edit, del].forEach(child => {
         btnGroup.appendChild(child);

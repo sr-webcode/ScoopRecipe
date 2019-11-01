@@ -4,7 +4,6 @@
   display: none;
   position: relative;
   width: 100%;
-
 }
 
 @import "./header.scss";
@@ -14,3 +13,4 @@
 @import "./components/recipeCard";
 @import "./components/recipeProfile";
 @import "./components/recipeManage";
+@import "./components/recordTemplate";

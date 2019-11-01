@@ -2,6 +2,7 @@ import RecipeList from "../components/recipeList";
 import RecipeManage from "../components/recipeManage";
 import RecipeProfile from "../components/recipeProfile";
 import RecipeModal from "../components/recipeModal";
+import RecordTemplate from "../components/recordTempate";
 import CrudEvent from "./crud";
 
 class CentralEvents {
@@ -15,11 +16,13 @@ class CentralEvents {
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.searchRecipe = this.searchRecipe.bind(this);
     this.menuControls = this.menuControls.bind(this);
+    this.toggleTempViews = this.toggleTempViews.bind(this);
 
     this.modalResponse = this.modalResponse.bind(this);
     this.modalCurrentAction = null;
     this.modalCurrentRecord = null;
     this.modalCategory = null;
+    this.resetTempViews = this.resetTempViews.bind(this);
   }
 
   init() {
@@ -43,6 +46,12 @@ class CentralEvents {
       ".recipe-manage > .container"
     );
     this.modalActions = document.querySelectorAll(".recipe-modal-act");
+    this.recordTemplateControl = document.querySelector(".template-controls");
+    this.tempViews = document.querySelectorAll("div[data-temp-role]");
+    this.tempBackBtn = document.querySelector('span[data-out-role="back"]');
+    this.tempCrudBtn = document.querySelector("span[data-crud-role]");
+    this.tempViewName = document.querySelector(".record-template-name");
+    this.crudAddOrUpdate = this.crudAddOrUpdate.bind(this);
   }
 
   setComponentInstances() {
@@ -50,6 +59,8 @@ class CentralEvents {
     this.recipeManage = new RecipeManage();
     this.recipeProfile = new RecipeProfile();
     this.recipeModal = new RecipeModal();
+    this.recordTemplate = new RecordTemplate();
+    this.crudEvent = new CrudEvent();
   }
 
   setEvents() {
@@ -77,6 +88,19 @@ class CentralEvents {
     this.modalActions.forEach(modal => {
       modal.addEventListener("click", this.modalResponse);
     });
+
+    //template controls for add and edit for temp views
+    this.recordTemplateControl.addEventListener("click", this.toggleTempViews);
+
+    //back btn
+    this.tempBackBtn.addEventListener("click", () => {
+      this.resetTempViews();
+      this.resetViews();
+      this.recipeManage.show();
+    });
+
+    //crud button on update and add
+    this.tempCrudBtn.addEventListener("click", this.crudAddOrUpdate);
   }
 
   //specific events
@@ -103,11 +127,14 @@ class CentralEvents {
         console.log(`someting went wrong`);
     }
   }
+
   resetViews() {
     this.recipeList.hide();
     this.recipeManage.hide();
     this.recipeProfile.hide();
+    this.recordTemplate.hide();
   }
+
   viewRecipeProfile(e) {
     const target = e.target.closest(".recipe-card");
     if (target) {
@@ -116,6 +143,7 @@ class CentralEvents {
       this.recipeProfile.show(id);
     }
   }
+
   toggleMobileMenu() {
     this.mobileMenu.classList.toggle("slide-mobile");
   }
@@ -136,12 +164,13 @@ class CentralEvents {
     switch (response) {
       case "yes":
         //get instance of crud events
-        this.crudEvent = new CrudEvent(
+ 
+
+        this.crudEvent.init(
           this.modalCurrentAction,
           this.modalCurrentRecord,
           this.modalCategory
         );
-        this.crudEvent.init();
         this.recipeModal.hide();
 
         break;
@@ -162,24 +191,62 @@ class CentralEvents {
       target = targetElem.getAttribute("data-role");
 
     switch (target) {
-      case "add":
-        // console.log(baseParent);
-        //new template for this same goes for add
+      case "patch":
+        this.resetViews();
+
+        this.modalCurrentAction = target;
+        this.modalCurrentRecord = id;
+        this.modalCategory = category;
+
+        this.recordTemplate.show(
+          this.modalCurrentRecord,
+          this.modalCurrentAction
+        );
+
+        this.tempViewName.textContent = title;
+        this.tempCrudBtn.setAttribute("data-crud-role", "patch");
+        this.tempCrudBtn.textContent = "Update";
+
         break;
-      case "edit":
-        // console.log(baseParent);
-        //new template for this same goes for add
-          
-        break;
+
       case "delete":
         this.recipeModal.show(target, title);
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;
         this.modalCategory = category;
+
         break;
       default:
         return;
     }
+  }
+
+  resetTempViews() {
+    this.tempViews.forEach(view => {
+      view.style.setProperty("display", "none");
+    });
+  }
+
+  toggleTempViews(e) {
+    const role = e.target.getAttribute("data-temp-role");
+    if (role) {
+      this.resetTempViews();
+
+      const currentTempView = document.querySelector(
+        `div[data-temp-role='${role}']`
+      );
+      currentTempView.style.setProperty("display", "block");
+    }
+  }
+
+  crudAddOrUpdate(e) {
+
+
+    this.crudEvent.init(
+      this.modalCurrentAction,
+      this.modalCurrentRecord,
+      this.modalCategory
+    );
   }
 }
 
