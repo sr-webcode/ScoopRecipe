@@ -1,17 +1,19 @@
 ///this is where we interchanged add and edit records!
 
 class RecordTemplate {
+
   constructor() {
+
     this.domCache();
     this.recordLookup = this.recordLookup.bind(this);
     this.showPatchTemplate = this.showPatchTemplate.bind(this);
-    this.showPostTemplate = this.showPatchTemplate.bind(this);
-    this.extractBasic = this.extractBasic.bind(this);
-    this.extractIngredients = this.extractIngredients.bind(this);
-    this.extractSteps = this.extractSteps.bind(this);
+    this.basicTemplate = this.basicTemplate.bind(this);
+    this.ingredientsTemplate = this.ingredientsTemplate.bind(this);
+    this.stepsTemplate = this.stepsTemplate.bind(this);
     this.dataFragmenter = this.dataFragmenter.bind(this);
     this.classMarker = this.classMarker.bind(this);
     this.clearTemplateData = this.clearTemplateData.bind(this);
+    this.showNewTemplate = this.showNewTemplate.bind(this);
   }
 
   init() {
@@ -21,13 +23,12 @@ class RecordTemplate {
   domCache() {
     this.recordTemp = document.querySelector(".record-template");
     this.recordTempWrapper = document.querySelector(".record-template-wrapper");
-
     this.recordInitView = document.querySelector('div[data-temp-role="init"]');
     this.recordIngView = document.querySelector('div[data-temp-role="ing"]');
     this.recordStepView = document.querySelector('div[data-temp-role="steps"]');
   }
 
-  //request speicific data based on uuid
+
   recordLookup(id) {
     const uri = `http://localhost:3001/recipes/${id}`,
       request = new Request(uri, {
@@ -51,18 +52,15 @@ class RecordTemplate {
       });
   }
 
-  showPostTemplate() {
-    console.log(`adding bro!`);
-  }
-
   showPatchTemplate(data) {
     this.clearTemplateData();
-    this.extractBasic(data);
-    this.extractIngredients(data);
-    this.extractSteps(data);
+    this.basicTemplate(data);
+    this.ingredientsTemplate(data);
+    this.stepsTemplate(data);
   }
 
-  extractBasic({ title, description, prepTime, cookTime, servings }) {
+  basicTemplate(objData) {
+
     const titleField = document.createElement("input"),
       descField = document.createElement("textarea"),
       prepField = document.createElement("input"),
@@ -91,17 +89,28 @@ class RecordTemplate {
     cookField.setAttribute("name", "cookTime");
     servingsField.setAttribute("name", "servings");
 
-    titleField.value = title;
-    descField.value = description;
-    prepField.value = prepTime;
-    cookField.value = cookTime;
-    servingsField.value = servings;
+    titleField.placeholder = "title or name of recipe...";
+    descField.placeholder = "brief description about the recipe...";
+    prepField.value = 0;
+    cookField.value = 0;
+    servingsField.value = 0;
+
+
+    if (this.existingRecord) {
+      const { title, description, prepTime, cookTime, servings } = objData;
+      titleField.value = title;
+      descField.value = description;
+      prepField.value = prepTime;
+      cookField.value = cookTime;
+      servingsField.value = servings;
+    }
 
     titleLabel.textContent = "Title";
     descLabel.textContent = "Description";
     prepLabel.textContent = "Preparation (min)";
     cookLabel.textContent = "Cook Time (min)";
     servingsLabel.textContent = "Servings (amount)";
+
 
     //add class
     const fields = [
@@ -121,26 +130,63 @@ class RecordTemplate {
     //append to fragmenter
     const data = this.dataFragmenter(fields);
     this.recordInitView.appendChild(data);
+
   }
 
-  extractIngredients(data) {
+  ingredientsTemplate(data) {
 
-    const ingredientListing = data.ingredients,
-      ingHeaderGroup = document.createElement("ul"),
+
+    const ingHeaderGroup = document.createElement("ul"),
       ingHeader1 = document.createElement("li"),
       ingHeader2 = document.createElement("li"),
       ingHeader3 = document.createElement("li"),
-      ingredientMasterContainer = document.createElement("ul");
+      ingredientMasterContainer = document.createElement("ul"),
+      addRowsBtn = document.createElement('span');
 
-    //iterate through ingredient list
-    const ingTree = ingredientListing.map(each => {
+
+    if (this.existingRecord) {
+      //iterate through ingredient list if existing record
+      const ingredientListing = data.ingredients;
+
+      const ingTree = ingredientListing.map(each => {
+        const inputList = document.createElement("li"),
+          inputText = document.createElement("input"),
+          inputAmt = document.createElement("input"),
+          inputMeasure = document.createElement("input");
+
+        //set data type
+        inputList.setAttribute("uuid", each.uuid);
+        inputText.setAttribute("type", "text");
+        inputAmt.setAttribute("type", "number");
+        inputMeasure.setAttribute("type", "text");
+        inputText.setAttribute("name", "name");
+        inputAmt.setAttribute("name", "amount");
+        inputMeasure.setAttribute("name", "measurement");
+
+        //set val
+        inputText.value = each.name;
+        inputAmt.value = each.amount || "-";
+        inputMeasure.value = each.measurement || "-";
+
+        [inputText, inputAmt, inputMeasure].forEach(child => {
+          child.classList.add("record-temp-field");
+          inputList.appendChild(child);
+        });
+        return inputList;
+
+      });
+
+      //initial append for data rows
+      const initList = this.dataFragmenter(ingTree);
+      ingredientMasterContainer.appendChild(initList);
+
+    } else {
+
       const inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
         inputMeasure = document.createElement("input");
 
-      //set data type
-      inputList.setAttribute("uuid", each.uuid);
       inputText.setAttribute("type", "text");
       inputAmt.setAttribute("type", "number");
       inputMeasure.setAttribute("type", "text");
@@ -148,27 +194,26 @@ class RecordTemplate {
       inputAmt.setAttribute("name", "amount");
       inputMeasure.setAttribute("name", "measurement");
 
-      //set val
-      inputText.value = each.name;
-      inputAmt.value = each.amount || "-";
-      inputMeasure.value = each.measurement || "-";
+
+      inputText.placeholder = "ingredient name...";
+      inputAmt.value = 0;
+      inputMeasure.placeholder = "ingredient measure...";
+
 
       [inputText, inputAmt, inputMeasure].forEach(child => {
         child.classList.add("record-temp-field");
         inputList.appendChild(child);
       });
+      ingredientMasterContainer.appendChild(inputList);
+    }
 
-      return inputList;
-    });
 
-    //initial append for data rows
-    const initList = this.dataFragmenter(ingTree);
-    ingredientMasterContainer.appendChild(initList);
-
-    //set table headers
+    //set table headers and other data
     ingHeader1.textContent = "Name";
     ingHeader2.textContent = "Amount";
     ingHeader3.textContent = "Measure";
+    addRowsBtn.textContent = "new row";
+    addRowsBtn.setAttribute('data-role', 'newrow');
 
     //initial append for header
     [ingHeader1, ingHeader2, ingHeader3].forEach(child => {
@@ -178,80 +223,142 @@ class RecordTemplate {
     //base classes
     ingHeaderGroup.classList.add("record-temp-header");
     ingredientMasterContainer.classList.add("record-temp-master");
+    addRowsBtn.classList.add('add-rows-btn');
+
 
     //fragment level append
-    const masterFragment = this.dataFragmenter([
-      ingHeaderGroup,
-      ingredientMasterContainer
-    ]);
+    const masterFragment = this.dataFragmenter(
+      this.existingRecord ?
+        [
+          ingHeaderGroup,
+          ingredientMasterContainer,
+        ] :
+        [
+          ingHeaderGroup,
+          ingredientMasterContainer,
+          addRowsBtn
+        ]
+    );
 
     this.recordIngView.appendChild(masterFragment);
+
   }
 
-  extractSteps({ directions }) {
+  stepsTemplate(objData) {
+
+
     const directionsMaster = document.createElement("ul"),
       dirHeaderGroup = document.createElement("ul"),
       dirHeader1 = document.createElement("li"),
-      dirHeader2 = document.createElement("li");
+      dirHeader2 = document.createElement("li"),
+      addRowsBtn = document.createElement('span');
 
-    //iterate through each direction
-    const directionData = directions.map(each => {
+
+    if (this.existingRecord) {
+
+      //iterate through each direction
+
+      const { directions } = objData;
+      const directionData = directions.map(each => {
+        const insList = document.createElement("li"),
+          insText = document.createElement("input"),
+          insOptional = document.createElement("select"),
+          isTrue = document.createElement("option"),
+          isFalse = document.createElement("option");
+
+        //set classnames
+
+        insText.classList.add("record-temp-field");
+        insOptional.classList.add("record-temp-field");
+
+        //set types
+        insText.setAttribute("type", "text");
+        insText.setAttribute("name", "instructions");
+        insOptional.setAttribute("name", "optional");
+
+
+        //append data
+        isTrue.textContent = "true";
+        isFalse.textContent = "false";
+
+        insText.value = each.instructions;
+
+        [isTrue, isFalse].forEach(elem => {
+          insOptional.appendChild(elem);
+        });
+
+        const shouldSelect = String(each.optional);
+        insOptional.selectedIndex = shouldSelect === "true" ? 0 : 1;
+
+        [insText, insOptional].forEach(elem => {
+          insList.appendChild(elem);
+        });
+
+        return insList;
+      });
+
+      const currentList = this.dataFragmenter(directionData);
+      directionsMaster.appendChild(currentList);
+
+    } else {
+
+
       const insList = document.createElement("li"),
         insText = document.createElement("input"),
         insOptional = document.createElement("select"),
         isTrue = document.createElement("option"),
         isFalse = document.createElement("option");
 
-      //set classnames
 
       insText.classList.add("record-temp-field");
       insOptional.classList.add("record-temp-field");
 
-      //set types
       insText.setAttribute("type", "text");
-    
+      insText.setAttribute("name", "instructions");
+      insOptional.setAttribute("name", "optional");
 
-      //append data
       isTrue.textContent = "true";
       isFalse.textContent = "false";
-      
-      insText.value = each.instructions;
 
       [isTrue, isFalse].forEach(elem => {
         insOptional.appendChild(elem);
       });
 
-      const shouldSelect = String(each.optional);
-      insOptional.selectedIndex = shouldSelect === "true" ? 0 : 1;
+
+      insText.placeholder = "type specific instructions...."
+      insOptional.selectedIndex = 1;
 
       [insText, insOptional].forEach(elem => {
         insList.appendChild(elem);
       });
 
-      return insList;
+      directionsMaster.appendChild(insList);
+    }
 
-    });
 
     //set base styles
     directionsMaster.classList.add("record-temp-master");
     dirHeaderGroup.classList.add("record-temp-header");
+    addRowsBtn.classList.add('add-rows-btn');
 
     //set data
     dirHeader1.textContent = "Instructions";
     dirHeader2.textContent = "Optional";
+    addRowsBtn.textContent = "new row"
+    addRowsBtn.setAttribute('data-role', 'newrow');
 
     //base append for header
     const headerItems = this.dataFragmenter([dirHeader1, dirHeader2]);
     dirHeaderGroup.appendChild(headerItems);
 
-    //append to master container
-    const currentList = this.dataFragmenter(directionData);
-    directionsMaster.appendChild(currentList);
-
     //master data
-    const masterData = this.dataFragmenter([dirHeaderGroup, directionsMaster]);
-
+    const masterData = this.dataFragmenter(
+      this.existingRecord ?
+        [dirHeaderGroup, directionsMaster]
+        : [dirHeaderGroup, directionsMaster, addRowsBtn]
+    );
     this.recordStepView.appendChild(masterData);
+
   }
 
   classMarker(fields) {
@@ -276,18 +383,30 @@ class RecordTemplate {
     this.recordStepView.innerHTML = "";
   }
 
+
+  showNewTemplate() {
+    this.clearTemplateData();
+    this.basicTemplate();
+    this.ingredientsTemplate();
+    this.stepsTemplate();
+    this.recordInitView.style.setProperty("display", "block");
+  }
+
   hide() {
     this.recordTemp.style.setProperty("display", "none");
   }
 
-  show(uuid = false, action) {
+  show(uuid, action) {
     this.action = action;
     this.recordTemp.style.setProperty("display", "block");
-    switch (action) {
+
+    switch (action.toLowerCase()) {
       case "post":
-        this.showPostTemplate();
+        this.existingRecord = false;
+        this.showNewTemplate();
         break;
       case "patch":
+        this.existingRecord = true;
         this.recordLookup(uuid);
         break;
       default:
@@ -295,6 +414,8 @@ class RecordTemplate {
         break;
     }
   }
+
+
 }
 
 export default RecordTemplate;

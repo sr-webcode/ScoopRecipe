@@ -3,107 +3,107 @@
     {
       "uuid": "e80ea521-4d42-48fe-a7a6-ac8952bc0de4",
       "title": "Queso Brat Scrambles",
-      "description": "A delicious breakfast, fit for a crowds.",
+      "description": "A tasty breakfast, fit for a crowds.",
       "images": {
         "full": "/img/queso_brat_scramble.jpg",
         "medium": "/img/queso_brat_scramble--m.jpg",
         "small": "/img/queso_brat_scramble--s.jpg"
       },
-      "servings": 4,
-      "prepTime": 5,
-      "cookTime": 35,
+      "servings": 3,
+      "prepTime": 6,
+      "cookTime": 29,
       "postDate": "01/20/2018 05:15:03 PM",
       "editDate": "02/05/2018 11:56:29 PM",
       "ingredients": [
         {
           "uuid": "62798278-2fbc-4c31-98de-b7959c191688",
-          "amount": 1,
-          "measurement": "package (19 oz)",
-          "name": "queso brats"
+          "name": "queso brat",
+          "amount": 2,
+          "measurement": "package (19 oz)"
         },
         {
           "uuid": "2df619ea-8472-48f4-9615-3f387a492d22",
-          "amount": 8,
-          "measurement": "tablespoons",
-          "name": "canola oil"
+          "name": "canola oil",
+          "amount": 10,
+          "measurement": "tablespoons"
         },
         {
           "uuid": "fee4a89c-8c27-4073-9055-a0b052a1c079",
+          "name": "corn tortillas, cut into 1/2-inch squares",
           "amount": 4,
-          "measurement": "",
-          "name": "corn tortillas, cut into 1/2-inch squares"
+          "measurement": "quarter"
         },
         {
           "uuid": "6278b9e5-3862-44f8-97b0-5bd37bb70141",
+          "name": "small red onion, diced",
           "amount": 0.5,
-          "measurement": "",
-          "name": "small red onion, diced"
+          "measurement": "-"
         },
         {
           "uuid": "41785201-9596-4ebc-b8ea-1feb562ebc53",
+          "name": "small red pepper, diced",
           "amount": 1,
-          "measurement": "",
-          "name": "small red pepper, diced"
+          "measurement": "-"
         },
         {
           "uuid": "34918edd-b5fd-475c-9a13-364632971938",
+          "name": "jalapeno pepper, seeded and chopped",
           "amount": 1,
-          "measurement": "",
-          "name": "jalapeno pepper, seeded and chopped"
+          "measurement": "-"
         },
         {
           "uuid": "75fe2545-4053-40bd-9c4f-150b61a052fb",
+          "name": "garlic, minced",
           "amount": 2,
-          "measurement": "cloves",
-          "name": "garlic, minced"
+          "measurement": "cloves"
         },
         {
           "uuid": "3d810ba9-7e4e-48aa-b2e9-7918e38b358d",
+          "name": "eggs",
           "amount": 8,
-          "measurement": "",
-          "name": "eggs"
+          "measurement": "-"
         },
         {
           "uuid": "7fbce07e-b640-4f36-8a7f-d094dc04d7d2",
+          "name": "half-and-half cream",
           "amount": 0.25,
-          "measurement": "cup",
-          "name": "half-and-half cream"
+          "measurement": "cup"
         },
         {
           "uuid": "cdfa1350-3190-46b5-8f4d-4dfdadee7e39",
+          "name": "chili powder",
           "amount": 1.5,
-          "measurement": "teaspoons",
-          "name": "chili powder"
+          "measurement": "teaspoons"
         },
         {
           "uuid": "210b15ac-552e-4450-b162-c0a41bb3389d",
+          "name": "salt",
           "amount": 0.5,
-          "measurement": "teaspoon",
-          "name": "salt"
+          "measurement": "teaspoon"
         },
         {
           "uuid": "885293b6-50ae-4ffd-b6d4-32b795d96031",
+          "name": "hot sauce, more to taste",
           "amount": 5,
-          "measurement": "dashes",
-          "name": "hot sauce, more to taste"
+          "measurement": "dashes"
         },
         {
           "uuid": "da6965ac-b6c4-4715-b3d5-2a24f236650a",
+          "name": "halved grape tomatoes",
           "amount": 1,
-          "measurement": "cup",
-          "name": "halved grape tomatoes"
+          "measurement": "cup"
         },
         {
           "uuid": "5f79e3c0-f214-4226-a660-1049778355a8",
+          "name": "canned black beans, rinsed and drained",
           "amount": 0.5,
-          "measurement": "cup",
-          "name": "canned black beans, rinsed and drained"
+          "measurement": "cup"
         },
         {
           "uuid": "86c9eb8e-3ff6-4d4f-83d7-ea4d9f1ae455",
+          "name": "pepper jack cheese, shredded",
           "amount": 1,
-          "measurement": "cup",
-          "name": "pepper jack cheese, shredded"
+          "measurement": "cup"
         }
       ],
       "directions": [
@@ -145,7 +145,7 @@
         },
         {
           "instructions": "Serve immediately.",
-          "optional": false
+          "optional": true
         }
       ]
     },
@@ -166,39 +166,39 @@
       "ingredients": [
         {
           "uuid": "3d810ba9-7e4e-48aa-b2e9-7918e38b358d",
+          "name": "egg, lightly beaten",
           "amount": 1,
-          "measurement": "",
-          "name": "egg, lightly beaten"
+          "measurement": "-"
         },
         {
           "uuid": "6d5dce01-b305-4df1-875e-1354a048bcea",
+          "name": "dry bread crumbs",
           "amount": 0.333,
-          "measurement": "cup",
-          "name": "dry bread crumbs"
+          "measurement": "cup"
         },
         {
           "uuid": "0c62dd1d-7b0f-4471-ba06-df220177ae39",
+          "name": "parmesan cheese, grated",
           "amount": 0.25,
-          "measurement": "cup",
-          "name": "parmesan cheese, grated"
+          "measurement": "cup"
         },
         {
           "uuid": "aa1ff525-4190-4a66-8d12-3f383a752b55",
+          "name": "milk",
           "amount": 0.25,
-          "measurement": "cup",
-          "name": "milk"
+          "measurement": "cup"
         },
         {
           "uuid": "6278b9e5-3862-44f8-97b0-5bd37bb70141",
+          "name": "onion, finely chopped",
           "amount": 0.25,
-          "measurement": "cup",
-          "name": "onion, finely chopped"
+          "measurement": "cup"
         },
         {
           "uuid": "62798278-2fbc-4c31-98de-b7959c191688",
+          "name": "ground italian sausage",
           "amount": 1.25,
-          "measurement": "lbs",
-          "name": "ground italian sausage"
+          "measurement": "lbs"
         }
       ],
       "directions": [
@@ -245,57 +245,57 @@
       "ingredients": [
         {
           "uuid": "3d810ba9-7e4e-48aa-b2e9-7918e38b358d",
-          "amount": 1,
-          "measurement": "package (13.5 oz)",
-          "name": "kielbasa sausage"
+          "name": "kielbasa sausage",
+          "amount": 4,
+          "measurement": "package (13.5 oz)"
         },
         {
           "uuid": "6d5dce01-b305-4df1-875e-1354a048bcea",
+          "name": "carrot, sliced into small chunks",
           "amount": 1,
-          "measurement": "cup",
-          "name": "carrot, sliced into small chunks"
+          "measurement": "cup"
         },
         {
           "uuid": "6278b9e5-3862-44f8-97b0-5bd37bb70141",
+          "name": "large onion, coarsely chopped",
           "amount": 1,
-          "measurement": "",
-          "name": "large onion, coarsely chopped"
+          "measurement": "-"
         },
         {
           "uuid": "77ae45d7-659b-4cb5-a4ea-07f00e442974",
+          "name": "butter",
           "amount": 2,
-          "measurement": "tablespoons",
-          "name": "butter"
+          "measurement": "tablespoons"
         },
         {
           "uuid": "efdc9267-cfbb-4e3e-90e2-1fe7287ed4e6",
+          "name": "small head of cabbage, cut into wedges",
           "amount": 1,
-          "measurement": "",
-          "name": "small head of cabbage, cut into wedges"
+          "measurement": "-"
         },
         {
           "uuid": "e616c374-ed92-4b99-81c2-f73d180601e8",
+          "name": "dried thyme",
           "amount": 0.5,
-          "measurement": "teaspoon",
-          "name": "dried thyme"
+          "measurement": "teaspoon"
         },
         {
           "uuid": "210b15ac-552e-4450-b162-c0a41bb3389d",
+          "name": "salt",
           "amount": 0.25,
-          "measurement": "teaspoon",
-          "name": "salt"
+          "measurement": "teaspoon"
         },
         {
           "uuid": "5fc6a47f-7ef4-48ab-a5d9-384417dc63cf",
+          "name": "black pepper",
           "amount": 0.25,
-          "measurement": "teaspoon",
-          "name": "black pepper"
+          "measurement": "teaspoon"
         },
         {
           "uuid": "da4df371-eb5d-44f6-905c-6c10255b24b4",
+          "name": "refrigerated prepared mashed potatoes",
           "amount": 2,
-          "measurement": "packages (24 oz each)",
-          "name": "refrigerated prepared mashed potatoes"
+          "measurement": "packages (24 oz each)"
         }
       ],
       "directions": [
@@ -312,14 +312,14 @@
           "optional": false
         },
         {
-          "instructions": "Serve with sausage mixture.",
+          "instructions": "Serve with sausage mixtures.",
           "optional": false
         }
       ]
     },
     {
       "uuid": "3555aec3-47e1-44d4-b8f2-607aad5cee69",
-      "title": "Brussel Chips",
+      "title": "Brussels Chips",
       "description": "Tasty, crispy, spicy and super healthy!",
       "images": {
         "full": "/img/brussel_chips.jpg",
@@ -334,38 +334,38 @@
       "ingredients": [
         {
           "uuid": "77ae45d7-659b-4cb5-a4ea-07f00e442974",
+          "name": "butter",
           "amount": 2,
-          "measurement": "tablespoons",
-          "name": "butter"
+          "measurement": "tablespoons"
         },
         {
           "uuid": "86b9842d-3025-4d27-82aa-459ef4f8ab7f",
-          "amount": 1.5,
-          "measurement": "teaspoons",
-          "name": "dijon mustard"
+          "name": "dijon mustard",
+          "amount": 1.25,
+          "measurement": "teaspoons"
         },
         {
           "uuid": "210b15ac-552e-4450-b162-c0a41bb3389d",
-          "amount": 0.25,
-          "measurement": "teaspoon",
-          "name": "salt"
+          "name": "salt",
+          "amount": 1.5,
+          "measurement": "teaspoon"
         },
         {
           "uuid": "3d6ee987-8ffd-479c-88e0-e3eca690704f",
-          "amount": 1,
-          "measurement": "pinch",
-          "name": "red pepper flakes"
+          "name": "red pepper flakes",
+          "amount": 4,
+          "measurement": "pinch"
         },
         {
           "uuid": "95e5a38d-26db-4e90-9773-d6be11a280df",
-          "amount": 1,
-          "measurement": "pound",
-          "name": "brussel sprouts"
+          "name": "sprouts brussels",
+          "amount": 5,
+          "measurement": "pound"
         }
       ],
       "directions": [
         {
-          "instructions": "Place a rack in top position of your oven and preheat to 325 F.",
+          "instructions": "Place a rack in top position of your oven and preheat to 105 F.",
           "optional": false
         },
         {
@@ -480,6 +480,53 @@
           "optional": false
         }
       ]
+    },
+    {
+      "title": "Chicken Tortilla Wraps",
+      "description": "Breakfast in a \"rush\".",
+      "prepTime": 10,
+      "cookTime": 5,
+      "servings": 4,
+      "ingredients": [
+        {
+          "uuid": "null",
+          "name": "Chicken (steam)",
+          "amount": 1,
+          "measurement": "1/2 Breast Part"
+        },
+        {
+          "uuid": "null",
+          "name": "Tortilla Wraps",
+          "amount": 4,
+          "measurement": "Pieces"
+        },
+        {
+          "uuid": "null",
+          "name": "Olive Oil",
+          "amount": 1,
+          "measurement": "Bottle"
+        }
+      ],
+      "directions": [
+        {
+          "instructions": "Place Cooked Chicken in Tortilla Wrap",
+          "optional": false
+        },
+        {
+          "instructions": "Fold Tortilla Wrap evenly to avoid messy content spilling.",
+          "optional": false
+        },
+        {
+          "instructions": "Enjoy and eat with your friends.",
+          "optional": true
+        }
+      ],
+      "images": {
+        "full": "/img/temp.jpg",
+        "medium": "/img/temp_medium.jpg",
+        "small": "/img/temp_small.jpg"
+      },
+      "uuid": "FtC04mN"
     }
   ],
   "specials": [

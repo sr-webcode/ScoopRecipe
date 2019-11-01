@@ -1,113 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <div class="mobile-menu">
-      <span class="close-btn">X</span>
-      <ul>
-        <li><a data-nav-role="recipe">Recipes</a></li>
-        <li>
-          <a data-nav-role="manage">Manage Recipes</a>
-        </li>
-      </ul>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
 
-    <header class="site-header">
-      <div class="container">
-        <div class="site-branding">
-          <h1>SCOOP</h1>
-        </div>
+<body>
+  <div class="mobile-menu">
+    <span class="close-btn">X</span>
+    <ul>
+      <li><a data-nav-role="recipe">Recipes</a></li>
+      <li>
+        <a data-nav-role="manage">Manage Recipes</a>
+      </li>
+    </ul>
+  </div>
 
-        <nav class="site-nav">
-          <ul>
-            <li><a class="site-nav-act" data-nav-role="recipe">Recipes</a></li>
-            <li>
-              <a class="site-nav-act" data-nav-role="manage">Manage Recipes</a>
-            </li>
-          </ul>
-        </nav>
-
-        <span class="burger">
-          <div></div>
-          <div></div>
-          <div></div>
-        </span>
-      </div>
-    </header>
-
-    <main class="main">
-      <section class="recipe-search">
-        <div class="container">
-          <input
-            type="text"
-            name="recipe-search-input"
-            class="recipe-search-child"
-            id="txtSearch"
-            placeholder="Type recipe title or name ..."
-          />
-          <button class="recipe-search-child" id="btnSearch">Search</button>
-        </div>
-      </section>
-
-      <section class="recipe-listing">
-        <div class="container"></div>
-      </section>
-
-      <section class="recipe-profile">
-        <div class="container">
-          <div class="recipe-profile-wrapper"></div>
-        </div>
-      </section>
-
-      <div class="recipe-overlay">
-        <div class="recipe-modal">
-          <p class="recipe-modal-text"></p>
-          <div class="recipe-modal-act-group">
-            <span class="recipe-modal-act">Yes</span>
-            <span class="recipe-modal-act">No</span>
-          </div>
-        </div>
-      </div>
-
-      <section class="recipe-manage">
-        <div class="container"></div>
-      </section>
-
-      <section class="record-template">
-        <div class="container">
-          <h2 class="record-template-name"></h2>
-          <div class="record-template-wrapper">
-          
-            <ul class="template-controls">
-              <li data-temp-role="init" class="temp-item">Basic Info</li>
-              <li data-temp-role="ing" class="temp-item">Ingredients</li>
-              <li data-temp-role="steps" class="temp-item">Steps</li>
-            </ul>
-
-            <div data-temp-role="init" class="record-template-panel">
-               </div>
-            <div data-temp-role="ing" class="record-template-panel">
-              ingredients
-            </div>
-            <div data-temp-role="steps" class="record-template-panel">
-              steps
-            </div>
-            <span data-out-role="back" class="record-template-btn">Back</span>
-            <span data-crud-role class="record-template-btn"></span>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- <footer class="site-footer">
+  <header class="site-header">
     <div class="container">
+      <div class="site-branding">
+        <h1>SCOOP</h1>
+      </div>
+
+      <nav class="site-nav">
+        <ul>
+          <li><a class="site-nav-act" data-nav-role="recipe">Recipes</a></li>
+          <li>
+            <a class="site-nav-act" data-nav-role="manage">Manage Recipes</a>
+          </li>
+        </ul>
+      </nav>
+
+      <span class="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </span>
     </div>
-  </footer> -->
-  </body>
+  </header>
+
+  <main class="main">
+    <section class="recipe-search">
+      <div class="container">
+        <input type="text" name="recipe-search-input" class="recipe-search-child" id="txtSearch"
+          placeholder="Type recipe title or name ..." />
+        <button class="recipe-search-child" id="btnSearch">Search</button>
+      </div>
+    </section>
+
+    <section class="recipe-listing">
+      <div class="container"></div>
+    </section>
+
+    <section class="recipe-profile">
+      <div class="container">
+        <div class="recipe-profile-wrapper"></div>
+      </div>
+    </section>
+
+    <div class="recipe-overlay">
+      <div class="recipe-modal">
+        <p class="recipe-modal-text"></p>
+        <div class="recipe-modal-act-group">
+          <span class="recipe-modal-act">Yes</span>
+          <span class="recipe-modal-act">No</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="recipe-manage">
+      <div class="container">
+      </div>
+    </section>
+
+    <section class="record-template">
+      <div class="container">
+        <h2 class="record-template-name"></h2>
+        <div class="record-template-wrapper">
+
+          <ul class="template-controls">
+            <li data-temp-role="init" class="temp-item">Basic Info</li>
+            <li data-temp-role="ing" class="temp-item">Ingredients</li>
+            <li data-temp-role="steps" class="temp-item">Steps</li>
+          </ul>
+
+          <div data-temp-role="init" class="record-template-panel">
+          </div>
+          <div data-temp-role="ing" class="record-template-panel">
+          </div>
+          <div data-temp-role="steps" class="record-template-panel">
+          </div>
+          <span data-out-role="back" class="record-template-btn">Back</span>
+          <span data-crud-role class="record-template-btn"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>2019, Scoop Recipes and Ingredients Inc.</p>
+
+    </div>
+  </footer>
+
+</body>
+
 </html>
+
+
+<!-- <script src="https://use.fontawesome.com/6e311be996.js"></script> -->

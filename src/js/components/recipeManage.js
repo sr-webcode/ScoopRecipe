@@ -31,28 +31,36 @@ class RecipeManage {
   }
 
   render(data) {
+
     const recipeListing = document.createElement("div"),
-      docuFrag = document.createDocumentFragment(),
-      recipeListingHeader = document.createElement("h3");
+      recipeListingHeader = document.createElement("h3"),
+      newRecordBtn = document.createElement('span');
 
     //add styles
     recipeListing.classList.add("recipe-manage-listing");
+    newRecordBtn.classList.add('add-btn');
+
 
     //add data
     recipeListingHeader.textContent = "Current Recipes";
+    newRecordBtn.setAttribute('data-role', 'post');
+    newRecordBtn.textContent = "new record"
+
 
     //each list item
     const listItems = this.collateListItems(data);
 
     //append child elems
-    [recipeListingHeader, listItems].forEach(child => {
+    [recipeListingHeader, listItems, newRecordBtn].forEach(child => {
       recipeListing.appendChild(child);
     });
 
     this.recipeManageContainer.appendChild(recipeListing);
+
   }
 
   collateListItems(data) {
+
     const listParent = document.createElement("ul"),
       docuFrag = document.createDocumentFragment();
 
@@ -76,7 +84,7 @@ class RecipeManage {
       currentImage.setAttribute("src", `${item.images.small}`);
       listItem.setAttribute("data-title", item.title);
       listItem.setAttribute("data-id", item.uuid),
-      listItem.setAttribute("data-category", "recipes");
+        listItem.setAttribute("data-category", "recipes");
 
       [edit, del].forEach(child => {
         btnGroup.appendChild(child);

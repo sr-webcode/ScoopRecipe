@@ -17,12 +17,17 @@ class CentralEvents {
     this.searchRecipe = this.searchRecipe.bind(this);
     this.menuControls = this.menuControls.bind(this);
     this.toggleTempViews = this.toggleTempViews.bind(this);
+    this.ingRowsAdd = this.ingRowsAdd.bind(this);
+    this.stepRowsAdd = this.stepRowsAdd.bind(this)
 
+
+    //modal fn
     this.modalResponse = this.modalResponse.bind(this);
     this.modalCurrentAction = null;
     this.modalCurrentRecord = null;
     this.modalCategory = null;
     this.resetTempViews = this.resetTempViews.bind(this);
+
   }
 
   init() {
@@ -32,6 +37,7 @@ class CentralEvents {
   }
 
   domCache() {
+
     this.siteNav = document.querySelectorAll("[data-nav-role]");
     this.recipeListing = document.querySelector(".recipe-listing > .container");
     this.recipeProfile = document.querySelector(".recipe-profile > .container");
@@ -52,6 +58,8 @@ class CentralEvents {
     this.tempCrudBtn = document.querySelector("span[data-crud-role]");
     this.tempViewName = document.querySelector(".record-template-name");
     this.crudAddOrUpdate = this.crudAddOrUpdate.bind(this);
+    this.addIngredientRow = document.querySelector('div[data-temp-role="ing"]');
+    this.addStepsRow = document.querySelector('div[data-temp-role="steps"]');
   }
 
   setComponentInstances() {
@@ -101,6 +109,12 @@ class CentralEvents {
 
     //crud button on update and add
     this.tempCrudBtn.addEventListener("click", this.crudAddOrUpdate);
+
+
+    //rows add
+    this.addIngredientRow.addEventListener('click', this.ingRowsAdd);
+    this.addStepsRow.addEventListener('click', this.stepRowsAdd);
+
   }
 
   //specific events
@@ -116,11 +130,15 @@ class CentralEvents {
       case "recipe":
         //enable search
         this.recipeSearch.style.setProperty("display", "block");
+        this.resetViews();
+        this.resetTempViews();
         this.recipeList.show();
         break;
       case "manage":
         //hide general search
         this.recipeSearch.style.setProperty("display", "none");
+        this.resetViews();
+        this.resetTempViews();
         this.recipeManage.show();
         break;
       default:
@@ -164,7 +182,6 @@ class CentralEvents {
     switch (response) {
       case "yes":
         //get instance of crud events
- 
 
         this.crudEvent.init(
           this.modalCurrentAction,
@@ -183,6 +200,7 @@ class CentralEvents {
   }
 
   menuControls(e) {
+
     const targetElem = e.target,
       baseParent = targetElem.parentElement.parentElement,
       id = baseParent.getAttribute("data-id"),
@@ -191,22 +209,36 @@ class CentralEvents {
       target = targetElem.getAttribute("data-role");
 
     switch (target) {
+
+      case "post":
+
+        this.resetViews();
+        this.modalCurrentAction = target;
+        this.tempViewName.textContent = "New Record";
+        this.tempCrudBtn.setAttribute("data-crud-role", "post");
+        this.tempCrudBtn.textContent = "Add";
+
+        this.recordTemplate.show(
+          "0",
+          this.modalCurrentAction
+        );
+
+        break;
+
       case "patch":
         this.resetViews();
-
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;
         this.modalCategory = category;
-
-        this.recordTemplate.show(
-          this.modalCurrentRecord,
-          this.modalCurrentAction
-        );
 
         this.tempViewName.textContent = title;
         this.tempCrudBtn.setAttribute("data-crud-role", "patch");
         this.tempCrudBtn.textContent = "Update";
 
+        this.recordTemplate.show(
+          this.modalCurrentRecord,
+          this.modalCurrentAction
+        );
         break;
 
       case "delete":
@@ -214,7 +246,6 @@ class CentralEvents {
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;
         this.modalCategory = category;
-
         break;
       default:
         return;
@@ -247,7 +278,88 @@ class CentralEvents {
       this.modalCurrentRecord,
       this.modalCategory
     );
+
   }
+
+  ingRowsAdd(e) {
+
+    const spanTarget = e.target.getAttribute('data-role');
+
+    if (spanTarget) {
+
+      const listMaster = e.target.parentElement.querySelector('.record-temp-master');
+
+      //add list
+      const inputList = document.createElement("li"),
+        inputText = document.createElement("input"),
+        inputAmt = document.createElement("input"),
+        inputMeasure = document.createElement("input");
+
+      inputText.setAttribute("type", "text");
+      inputAmt.setAttribute("type", "number");
+      inputMeasure.setAttribute("type", "text");
+      inputText.setAttribute("name", "name");
+      inputAmt.setAttribute("name", "amount");
+      inputMeasure.setAttribute("name", "measurement");
+
+
+      inputText.placeholder = "ingredient name...";
+      inputAmt.value = 0;
+      inputMeasure.placeholder = "ingredient measure...";
+
+      [inputText, inputAmt, inputMeasure].forEach(child => {
+        child.classList.add("record-temp-field");
+        inputList.appendChild(child);
+      });
+
+      listMaster.appendChild(inputList);
+
+    }
+
+  }
+
+  stepRowsAdd(e) {
+
+    const spanTarget = e.target.getAttribute('data-role');
+
+    if (spanTarget) {
+
+      const listMaster = e.target.parentElement.querySelector('.record-temp-master');
+
+      //add list
+
+      const insList = document.createElement("li"),
+        insText = document.createElement("input"),
+        insOptional = document.createElement("select"),
+        isTrue = document.createElement("option"),
+        isFalse = document.createElement("option");
+
+      insText.classList.add("record-temp-field");
+      insOptional.classList.add("record-temp-field");
+
+      insText.setAttribute("type", "text");
+      insText.setAttribute("name", "instructions");
+      insOptional.setAttribute("name", "optional");
+
+      isTrue.textContent = "true";
+      isFalse.textContent = "false";
+
+      [isTrue, isFalse].forEach(elem => {
+        insOptional.appendChild(elem);
+      });
+
+      insText.placeholder = "type specific instructions...."
+      insOptional.selectedIndex = 1;
+
+      [insText, insOptional].forEach(elem => {
+        insList.appendChild(elem);
+      });
+      listMaster.appendChild(insList);
+    }
+
+  }
+
+
 }
 
 export default CentralEvents;

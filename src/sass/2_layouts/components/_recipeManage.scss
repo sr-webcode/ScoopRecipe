@@ -1,5 +1,6 @@
 .recipe-manage {
   @extend %alternatingComponent;
+
   .container {
     max-width: 700px;
   }
@@ -7,6 +8,7 @@
 
 .recipe-manage-listing {
   display: block;
+  position: relative;
   width: 100%;
   min-height: 400px;
   overflow: hidden;
@@ -18,14 +20,15 @@
   h3 {
     background-color: #000b22;
     color: #e9a804;
-    padding: 10px 20px;
+    padding: 15px 20px;
+    position: relative;
   }
 }
 
 .recipe-manage-menu {
   list-style: none;
   display: flex;
-  padding: 14px;
+  padding: 12px;
   flex-flow: column wrap;
 
   li {
@@ -34,6 +37,7 @@
     align-items: center;
     margin-top: 10px;
     width: 100%;
+
     &:nth-of-type(odd) {
       background-color: rgb(241, 241, 241);
     }
@@ -43,6 +47,7 @@
       height: 80px;
       margin-left: 4px;
     }
+
     h4 {
       margin-left: 10px;
       flex: 1;
@@ -53,6 +58,7 @@
 
 .btn-group {
   position: relative;
+
   span {
     cursor: pointer;
     margin: 0 8px;
@@ -62,9 +68,40 @@
     border-radius: 3px;
     font-size: 15px;
     font-weight: bold;
+
     &:hover {
       background-color: #000b22;
       color: #e9a804;
     }
+  }
+}
+
+
+.add-btn {
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  padding: 4px;
+  top: 0;
+  right: 0;
+  margin-top: 12px;
+  margin-right: 10px;
+  background-color: #e9a804;
+  color: #000b22;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
+  z-index: 20;
+  text-transform: uppercase;
+
+  &::after {
+    content: "+";
+    font-weight: bolder;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: #ca950d;
   }
 }

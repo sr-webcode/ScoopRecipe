@@ -62,7 +62,7 @@ class RecipeProfile {
 
   extractInsRecipe(data) {
 
-    const { title, description, ingredients, directions } = data[0];
+    const { title, description, ingredients, directions, cookTime, prepTime, servings } = data[0];
 
     const docuFrag = document.createDocumentFragment(),
       caption = document.createElement("div"),
@@ -71,16 +71,24 @@ class RecipeProfile {
       recipeIngredientMaster = document.createElement("ul"),
       recipeDesc = document.createElement("p"),
       recipeStepsTitle = document.createElement('h4'),
-      recipeSteps = document.createElement('ul');
+      recipeSteps = document.createElement('ul'),
+      cookTimeInfo = document.createElement('p'),
+      prepTimeInfo = document.createElement('p'),
+      serveInfo = document.createElement('p'),
+      tatBox = document.createElement('div');
+
 
 
     //set class names
     caption.classList.add("recipe-profile-caption");
     recipeIngredientMaster.classList.add("recipe-profile-ingredients");
     recipeSteps.classList.add('recipe-profile-steps');
-    recipeIngridTitle.classList.add('recipe-marker')
-    recipeStepsTitle.classList.add('recipe-marker')
-
+    recipeIngridTitle.classList.add('recipe-marker');
+    recipeStepsTitle.classList.add('recipe-marker');
+    cookTimeInfo.textContent = `Cook time: ${cookTime} minutes`;
+    prepTimeInfo.textContent = `Preparation time: ${prepTime} minutes`;
+    serveInfo.textContent = `Servings: ${servings}`;
+    tatBox.classList.add('recipe-tat-box');
 
 
     //set data for elems
@@ -88,6 +96,7 @@ class RecipeProfile {
     recipeDesc.textContent = description;
     recipeIngridTitle.textContent = "Ingredients:";
     recipeStepsTitle.textContent = "Instructions:"
+
 
     //iterate through igredients
     ingredients.forEach(ingredient => {
@@ -136,10 +145,16 @@ class RecipeProfile {
     });
 
 
+    //append tat box items
+    [prepTimeInfo, cookTimeInfo, serveInfo].forEach((child) => {
+      tatBox.appendChild(child);
+    });
+
     //append each child to parent
     [
       recipeTitle,
       recipeDesc,
+      tatBox,
       recipeIngridTitle,
       recipeIngredientMaster,
       recipeStepsTitle,
@@ -150,6 +165,7 @@ class RecipeProfile {
 
     caption.appendChild(docuFrag);
     return caption;
+
   }
 
   show(id) {

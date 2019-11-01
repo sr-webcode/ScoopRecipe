@@ -20,38 +20,48 @@ class DatabaseEvents {
   }
 
   serverRequest() {
+
     const request = this.specifyRequest();
-    console.log(request);
-    // fetch(request)
-    //   .then(res => {
-    //     return res.json();
-    //   })
-    //   .then(res => {
-    //     this.recipeManage.show();
-    //     this.recipeTemplate.hide();
-    //     console.log('query ok!')
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+
+
+    fetch(request)
+      .then(res => {
+        return res.json();
+      })
+      .then(res => {
+        this.recipeManage.show();
+        this.recipeTemplate.hide();
+        console.log('query ok!')
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
   }
 
   specifyRequest() {
+
     let uri;
 
-    //attach id if delete or patch request
-    const isDelPatch = ["delete", "patch"].indexOf(this.event) > -1;
-    const isAddPatch = ["post", "patch"].indexOf(this.event) > -1;
 
     switch (this.category) {
+
       case "recipes":
-        uri = `http://localhost:3001/recipes/${isDelPatch && this.id}`;
+
+        uri = this.event === "delete" || this.event === "patch" ?
+          `http://localhost:3001/recipes/${this.id}` : `http://localhost:3001/recipes`;
+
         break;
+
       case "specials":
-        uri = `http://localhost:3001/specials/${isDelPatch && this.id}`;
+        uri = this.event === "delete" || this.event === "patch" ?
+          `http://localhost:3001/specials/${isDelPatch && this.id}` : `http://localhost:3001/specials`;
+
         break;
+
       default:
         return false;
+
     }
 
     const dbRequest = new Request(uri, {
@@ -60,19 +70,39 @@ class DatabaseEvents {
       headers: new Headers({
         "Content-Type": "application/json"
       }),
-      body: isAddPatch ? this.defineRequestBody() : ""
+      body: ["post", "patch"].indexOf(this.event) > -1 ? this.defineRequestBody() : ""
     });
 
     return dbRequest;
   }
 
   defineRequestBody() {
-    //gather data first
+
     const data = this.gatherData();
-    // return data;
+
+    //determine if patch or add event
+    switch (this.event) {
+      case "post":
+        //insert tempImage
+        const newData = Object.assign({}, data, {
+          images: {
+            full: "/img/temp.jpg",
+            medium: "/img/temp_medium.jpg",
+            small: "/img/temp_small.jpg"
+          }
+        })
+        return JSON.stringify(newData)
+      case "patch":
+
+        return JSON.stringify(data);
+      default:
+        console.log(`something went wrong`)
+    }
+
   }
 
   gatherData() {
+
     const basicPanelItems = document.querySelectorAll(
       'div[data-temp-role="init"] > .record-temp-field'
     );
@@ -80,6 +110,9 @@ class DatabaseEvents {
     const ingPanelItems = document.querySelectorAll(
       'div[data-temp-role="ing"] > .record-temp-master > li'
     );
+
+    const stepsPanelItems = document.querySelectorAll('div[data-temp-role="steps"] > .record-temp-master > li');
+
 
     //basic data
     const basicData = Array.from(basicPanelItems)
@@ -109,15 +142,31 @@ class DatabaseEvents {
       return {
         uuid: each.getAttribute("uuid"),
         name: nestedRows[0].name,
-        amount: nestedRows[1].amount,
+        amount: parseFloat(nestedRows[1].amount),
         measurement: nestedRows[2].measurement
       };
     });
 
-    console.log(ingData);
+    //steps data
+    const stepsData = Array.from(stepsPanelItems).map((each) => {
+      const nestedRows = Array.from(each.querySelectorAll('.record-temp-field')).map((data) => {
+        return {
+          [data.name]: data.value
+        }
+      });
+      return {
+        instructions: nestedRows[0].instructions,
+        optional: nestedRows[1].optional === "false" ? false : true
+      }
+    })
 
-    // return JSON.stringify(basicData);
+
+    const overAllData = Object.assign({}, basicData, { ingredients: [...ingData], directions: [...stepsData] })
+
+    return overAllData;
+
   }
+
 }
 
 export default DatabaseEvents;
