@@ -19,19 +19,19 @@ class RecipeModal {
   }
 
   show(target, title) {
-
     switch (target) {
       case "post":
         this.modalText.textContent = `Appending new record to the database, are you satisfied with the current inputs?`;
-        this.fontAwesome.className = 'fas fa-plus-circle';
+        this.fontAwesome.className = 'fas fa-clipboard-check';
         break;
       case "patch":
         this.modalText.textContent = `Updating record to the database, are you satisfied with your current inputs?`;
-        this.fontAwesome.className = 'far fa-edit';
+        this.fontAwesome.className = 'fas fa-edit';
+
         break;
       case "delete":
         this.modalText.textContent = `Are you sure you want to delete ${title}?`;
-        this.fontAwesome.className = 'fas fa-minus-circle';
+        this.fontAwesome.className = 'fas fa-trash-alt';
         break;
       default:
         console.log(`something went wrong`);
@@ -39,6 +39,8 @@ class RecipeModal {
     }
     this.modalContainer.style.setProperty("display", "flex");
   }
+
+
 }
 
 export default RecipeModal;

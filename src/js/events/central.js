@@ -41,9 +41,7 @@ class CentralEvents {
     this.btnSearch = document.querySelector("#btnSearch");
     this.txtSearch = document.querySelector("#txtSearch");
     this.recipeSearch = document.querySelector(".recipe-search");
-    this.recipeManageMenu = document.querySelector(
-      ".recipe-manage > .container"
-    );
+    this.recipeManageMenu = document.querySelector(".recipe-manage > .container");
     this.modalActions = document.querySelectorAll(".recipe-modal-act");
     this.recordTemplateControl = document.querySelector(".template-controls");
     this.tempViews = document.querySelectorAll("div[data-temp-role]");
@@ -53,6 +51,7 @@ class CentralEvents {
     this.crudAddOrUpdate = this.crudAddOrUpdate.bind(this);
     this.addIngredientRow = document.querySelector('div[data-temp-role="ing"]');
     this.addStepsRow = document.querySelector('div[data-temp-role="steps"]');
+
   }
 
   setComponentInstances() {
@@ -251,48 +250,48 @@ class CentralEvents {
   }
 
   crudAddOrUpdate(e) {
-
     //we can validate fields here , before showing modal
-    //we can validate fields here , before showing modal
-    //we can validate fields here , before showing modal
-
     this.recipeModal.show(this.modalCurrentAction, false);
-
   }
 
   ingRowsAdd(e) {
-
     const spanTarget = e.target.getAttribute('data-role');
-
     if (spanTarget) {
-
-      const listMaster = e.target.parentElement.querySelector('.record-temp-master');
-
-
-      const inputList = document.createElement("li"),
+      const listMaster = e.target.parentElement.querySelector('.record-temp-master'),
+        inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
         inputMeasure = document.createElement("input");
 
-      inputText.setAttribute("type", "text");
-      inputAmt.setAttribute("type", "number");
-      inputMeasure.setAttribute("type", "text");
-      inputText.setAttribute("name", "name");
-      inputAmt.setAttribute("name", "amount");
-      inputMeasure.setAttribute("name", "measurement");
-
-
-      inputText.placeholder = "ingredient name...";
-      inputAmt.value = 0;
-      inputMeasure.placeholder = "ingredient measure...";
-
-      [inputText, inputAmt, inputMeasure].forEach(child => {
-        child.classList.add("record-temp-field");
-        inputList.appendChild(child);
-      });
-
-      listMaster.appendChild(inputList);
-
+      switch (spanTarget) {
+        case "newrow":
+          inputText.setAttribute("type", "text");
+          inputAmt.setAttribute("type", "number");
+          inputMeasure.setAttribute("type", "text");
+          inputText.setAttribute("name", "name");
+          inputAmt.setAttribute("name", "amount");
+          inputMeasure.setAttribute("name", "measurement");
+          inputText.placeholder = "ingredient name...";
+          inputAmt.value = 0;
+          inputMeasure.placeholder = "ingredient measure...";
+          [inputText, inputAmt, inputMeasure].forEach(child => {
+            child.classList.add("record-temp-field");
+            inputList.appendChild(child);
+          });
+          listMaster.appendChild(inputList);
+          break;
+        case "delrow":
+          const listItems = listMaster.querySelectorAll('li');
+          const lastItem = listMaster.querySelector('li:last-child');
+          if (listItems.length < 2) {
+            //return modal for not removing last record
+            return;
+          }
+          listMaster.removeChild(lastItem);
+          break;
+        default:
+          return
+      }
     }
 
   }
@@ -301,40 +300,50 @@ class CentralEvents {
 
     const spanTarget = e.target.getAttribute('data-role');
 
+    const listMaster = e.target.parentElement.querySelector('.record-temp-master'),
+      insList = document.createElement("li"),
+      insText = document.createElement("input"),
+      insOptional = document.createElement("select"),
+      isTrue = document.createElement("option"),
+      isFalse = document.createElement("option");
+
     if (spanTarget) {
-      const listMaster = e.target.parentElement.querySelector('.record-temp-master');
-      const insList = document.createElement("li"),
-        insText = document.createElement("input"),
-        insOptional = document.createElement("select"),
-        isTrue = document.createElement("option"),
-        isFalse = document.createElement("option");
 
-      insText.classList.add("record-temp-field");
-      insOptional.classList.add("record-temp-field");
+      switch (spanTarget) {
+        case "newrow":
+          insText.classList.add("record-temp-field");
+          insOptional.classList.add("record-temp-field");
+          insText.setAttribute("type", "text");
+          insText.setAttribute("name", "instructions");
+          insOptional.setAttribute("name", "optional");
+          isTrue.textContent = "true";
+          isFalse.textContent = "false";
+          [isTrue, isFalse].forEach(elem => {
+            insOptional.appendChild(elem);
+          });
+          insText.placeholder = "type specific instructions...."
+          insOptional.selectedIndex = 1;
+          [insText, insOptional].forEach(elem => {
+            insList.appendChild(elem);
+          });
+          listMaster.appendChild(insList);
+          break;
+        case "delrow":
+          const listItems = listMaster.querySelectorAll('li');
+          const lastItem = listMaster.querySelector('li:last-child');
+          if (listItems.length < 2) {
+            //return modal for not removing last record
+            return;
+          }
+          listMaster.removeChild(lastItem)
+          break;
+        default:
+          return
+      }
 
-      insText.setAttribute("type", "text");
-      insText.setAttribute("name", "instructions");
-      insOptional.setAttribute("name", "optional");
 
-      isTrue.textContent = "true";
-      isFalse.textContent = "false";
-
-      [isTrue, isFalse].forEach(elem => {
-        insOptional.appendChild(elem);
-      });
-
-      insText.placeholder = "type specific instructions...."
-      insOptional.selectedIndex = 1;
-
-      [insText, insOptional].forEach(elem => {
-        insList.appendChild(elem);
-      });
-      listMaster.appendChild(insList);
     }
-
   }
-
-
 }
 
 export default CentralEvents;

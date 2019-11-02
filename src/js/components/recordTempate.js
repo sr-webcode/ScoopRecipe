@@ -27,7 +27,6 @@ class RecordTemplate {
     this.recordStepView = document.querySelector('div[data-temp-role="steps"]');
   }
 
-
   recordLookup(id) {
     const uri = `http://localhost:3001/recipes/${id}`,
       request = new Request(uri, {
@@ -134,16 +133,24 @@ class RecordTemplate {
 
   ingredientsTemplate(data) {
 
-
     const ingHeaderGroup = document.createElement("ul"),
       ingHeader1 = document.createElement("li"),
       ingHeader2 = document.createElement("li"),
       ingHeader3 = document.createElement("li"),
       ingredientMasterContainer = document.createElement("ul"),
-      addRowsBtn = document.createElement('span');
+      addRowsBtn = document.createElement('span'),
+      delRowsBtn = document.createElement('span');
+
+
+    //base classes
+    ingHeaderGroup.classList.add("record-temp-header");
+    ingredientMasterContainer.classList.add("record-temp-master");
+    addRowsBtn.classList.add('template-rows-btn');
+    delRowsBtn.classList.add('template-rows-btn');
 
 
     if (this.existingRecord) {
+
       //iterate through ingredient list if existing record
       const ingredientListing = data.ingredients;
 
@@ -206,23 +213,20 @@ class RecordTemplate {
       ingredientMasterContainer.appendChild(inputList);
     }
 
-
     //set table headers and other data
     ingHeader1.textContent = "Name";
     ingHeader2.textContent = "Amount";
     ingHeader3.textContent = "Measure";
     addRowsBtn.textContent = "new row";
+    delRowsBtn.textContent = "delete row";
     addRowsBtn.setAttribute('data-role', 'newrow');
+    delRowsBtn.setAttribute('data-role', 'delrow');
+
 
     //initial append for header
     [ingHeader1, ingHeader2, ingHeader3].forEach(child => {
       ingHeaderGroup.appendChild(child);
     });
-
-    //base classes
-    ingHeaderGroup.classList.add("record-temp-header");
-    ingredientMasterContainer.classList.add("record-temp-master");
-    addRowsBtn.classList.add('add-rows-btn');
 
 
     //fragment level append
@@ -235,12 +239,12 @@ class RecordTemplate {
         [
           ingHeaderGroup,
           ingredientMasterContainer,
-          addRowsBtn
+          addRowsBtn,
+          delRowsBtn
         ]
     );
 
     this.recordIngView.appendChild(masterFragment);
-
   }
 
   stepsTemplate(objData) {
@@ -250,7 +254,8 @@ class RecordTemplate {
       dirHeaderGroup = document.createElement("ul"),
       dirHeader1 = document.createElement("li"),
       dirHeader2 = document.createElement("li"),
-      addRowsBtn = document.createElement('span');
+      addRowsBtn = document.createElement('span'),
+      delRowsBtn = document.createElement('span');
 
 
     if (this.existingRecord) {
@@ -292,7 +297,6 @@ class RecordTemplate {
         [insText, insOptional].forEach(elem => {
           insList.appendChild(elem);
         });
-
         return insList;
       });
 
@@ -300,7 +304,6 @@ class RecordTemplate {
       directionsMaster.appendChild(currentList);
 
     } else {
-
 
       const insList = document.createElement("li"),
         insText = document.createElement("input"),
@@ -334,17 +337,20 @@ class RecordTemplate {
       directionsMaster.appendChild(insList);
     }
 
-
     //set base styles
     directionsMaster.classList.add("record-temp-master");
     dirHeaderGroup.classList.add("record-temp-header");
-    addRowsBtn.classList.add('add-rows-btn');
+    addRowsBtn.classList.add('template-rows-btn');
+    delRowsBtn.classList.add('template-rows-btn');
 
     //set data
     dirHeader1.textContent = "Instructions";
     dirHeader2.textContent = "Optional";
     addRowsBtn.textContent = "new row"
+    delRowsBtn.textContent = "delete row"
     addRowsBtn.setAttribute('data-role', 'newrow');
+    delRowsBtn.setAttribute('data-role', 'delrow');
+
 
     //base append for header
     const headerItems = this.dataFragmenter([dirHeader1, dirHeader2]);
@@ -354,7 +360,7 @@ class RecordTemplate {
     const masterData = this.dataFragmenter(
       this.existingRecord ?
         [dirHeaderGroup, directionsMaster]
-        : [dirHeaderGroup, directionsMaster, addRowsBtn]
+        : [dirHeaderGroup, directionsMaster, addRowsBtn, delRowsBtn]
     );
     this.recordStepView.appendChild(masterData);
 
@@ -381,7 +387,6 @@ class RecordTemplate {
     this.recordIngView.innerHTML = "";
     this.recordStepView.innerHTML = "";
   }
-
 
   showNewTemplate() {
     this.clearTemplateData();
