@@ -16,7 +16,6 @@ class RecipeList {
   }
 
   getRecipeList(title) {
-
     ///show the component then call the listing api
     this.recipeListingContainer.innerHTML = "<span class='loader'></span>";
     const listRequest = new Request("http://localhost:3001/recipes", {
@@ -30,17 +29,12 @@ class RecipeList {
         return result.json();
       })
       .then(data => {
-
         if (!title) return this.extractList(data);
-
         const filterData = data.filter((recipe) => {
           return recipe.title.toLowerCase().indexOf(title) != -1;
         })
-
         if (filterData.length > 0) return this.extractList(filterData)
-
         this.recipeListingContainer.textContent = "the search yielded no results..."
-
       })
       .catch(err => {
         console.log(err);
@@ -49,7 +43,6 @@ class RecipeList {
 
   extractList(data) {
     const docuFrag = document.createDocumentFragment();
-
     data
       .map(record => {
         return {

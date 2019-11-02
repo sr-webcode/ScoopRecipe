@@ -12,8 +12,10 @@
  
  The following has not been implemented yet:
      -- form validation on crud operation
-     -- lazy loading on images   
+     
  
+    note: when searching for specific items or recipes that matches 2 or more uneven data, 
+         you may see some odd space in the middle in between records, im using flexbox;
     
  I created a repo on my github profile so you can go ahead and clone it
  Repo Link:https://github.com/sr-webcode/Scoop.git

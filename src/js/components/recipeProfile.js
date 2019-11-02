@@ -17,6 +17,7 @@ class RecipeProfile {
   }
 
   requestProfile(id) {
+    this.recipeProfileWrapper.innerHTML = "<span class='loader'></span>";
     const uri = "http://localhost:3001/recipes";
     const detailsRequest = new Request(uri, {
       method: "GET",
@@ -28,10 +29,12 @@ class RecipeProfile {
         return res.json();
       })
       .then(data => {
+        this.recipeProfileWrapper.innerHTML = "";
         const match = data.filter(record => {
           return record.uuid === id;
         });
         this.renderProfile(match);
+
       })
       .catch(err => {
         console.log(err);
@@ -39,16 +42,21 @@ class RecipeProfile {
   }
 
   renderProfile(record) {
+
     const { images } = record[0];
     const docuFrag = document.createDocumentFragment(),
       profileImage = document.createElement("div");
-
-
     const profileCaption = this.extractInsRecipe(record);
 
-
-    profileImage.classList.add("recipe-profile-image");
-    profileImage.style.setProperty("background-image", `url(${images.full})`);
+    //delay image loading   
+    profileImage.className = "recipe-profile-image image-loading";
+    const img1 = document.createElement('img');
+    img1.setAttribute('src', images.full);
+    img1.onload = () => {
+      profileImage.classList.remove('image-loading')
+      const path = img1.getAttribute('src');
+      profileImage.style.setProperty("background-image", `url(${path})`);
+    }
 
     [profileImage, profileCaption].forEach(child => {
       docuFrag.appendChild(child);

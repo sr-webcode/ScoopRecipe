@@ -489,13 +489,13 @@
       "servings": 4,
       "ingredients": [
         {
-          "uuid": null,
+          "uuid": "null",
           "name": "Chicken",
           "amount": 1,
           "measurement": "quarter"
         },
         {
-          "uuid": null,
+          "uuid": "null",
           "name": "Tortilla Wraps",
           "amount": 2,
           "measurement": "Slice"
@@ -503,7 +503,7 @@
       ],
       "directions": [
         {
-          "instructions": "Place Chicken inside tortilla",
+          "instructions": "Place Chicken inside wrapper",
           "optional": false
         },
         {
