@@ -103,11 +103,9 @@ class CentralEvents {
     //crud button on update and add
     this.tempCrudBtn.addEventListener("click", this.crudAddOrUpdate);
 
-
     //rows add
     this.addIngredientRow.addEventListener('click', this.ingRowsAdd);
     this.addStepsRow.addEventListener('click', this.stepRowsAdd);
-
   }
 
   //specific events
@@ -121,7 +119,6 @@ class CentralEvents {
 
     switch (target) {
       case "recipe":
-
         this.recipeSearch.style.setProperty("display", "block");
         this.resetViews();
         this.resetTempViews();
@@ -168,7 +165,6 @@ class CentralEvents {
 
   modalResponse(e) {
     const response = e.currentTarget.textContent.toLowerCase();
-
     switch (response) {
       case "yes":
         this.crudEvent.init(
@@ -198,8 +194,6 @@ class CentralEvents {
     switch (target) {
 
       case "post":
-
-
         this.resetViews();
         this.modalCurrentAction = target;
         this.tempViewName.textContent = "New Record";
@@ -210,17 +204,13 @@ class CentralEvents {
           "0",
           this.modalCurrentAction
         );
-
         break;
 
       case "patch":
-
-
         this.resetViews();
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;
         this.modalCategory = category;
-
         this.tempViewName.textContent = title;
         this.tempCrudBtn.setAttribute("data-crud-role", "patch");
         this.tempCrudBtn.textContent = "Update";
@@ -262,12 +252,11 @@ class CentralEvents {
 
   crudAddOrUpdate(e) {
 
+    //we can validate fields here , before showing modal
+    //we can validate fields here , before showing modal
+    //we can validate fields here , before showing modal
 
-    this.crudEvent.init(
-      this.modalCurrentAction,
-      this.modalCurrentRecord,
-      this.modalCategory
-    );
+    this.recipeModal.show(this.modalCurrentAction, false);
 
   }
 

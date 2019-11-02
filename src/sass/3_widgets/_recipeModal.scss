@@ -6,37 +6,72 @@
   background-color: rgb(255, 255, 255);
   width: 100%;
   max-width: 360px;
-  height: 250px;
-  z-index: 50;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  padding: 8px;
   z-index: 50;
+  overflow: hidden;
+}
+
+
+.recipe-msg-group {
+  min-height: 180px;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  text-align: center;
+  padding: 10px;
+
+  i {
+    font-size: 38px;
+    color: rgb(0, 11, 34);
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+
+
 }
 
 .recipe-modal-text {
-  font-size: 20px;
+  position: relative;
+  font-size: 18px;
   text-align: center;
+  color: rgb(0, 11, 34);
+  align-items: center;
   margin-bottom: 20px;
   line-height: 1.2;
-  padding: 4px;
+  padding: 8px;
 }
 
 .recipe-modal-act-group {
   display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: center;
+  padding: 8px 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: block;
+    margin-top: -20px;
+    width: 100%;
+    min-height: 170px;
+    background-color: rgb(241, 241, 241);
+    z-index: -1;
+  }
 }
 
 .recipe-modal-act {
   cursor: pointer;
-  display: inline-block;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 50px;
+  padding: 10px 45px;
   margin: 10px;
   text-align: center;
   font-weight: bold;
@@ -54,7 +89,6 @@
   position: fixed;
   justify-content: center;
   align-items: center;
-  padding: 10px;
   top: 0;
   left: 0;
   width: 100%;

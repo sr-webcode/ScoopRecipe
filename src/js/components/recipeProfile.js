@@ -54,9 +54,11 @@ class RecipeProfile {
     const img1 = document.createElement('img');
     img1.setAttribute('src', images.full);
     img1.onload = () => {
-      profileImage.classList.remove('image-loading')
       const path = img1.getAttribute('src');
       profileImage.style.setProperty("background-image", `url(${path})`);
+      setTimeout(() => {
+        profileImage.classList.remove('image-loading')
+      }, 1000);
     }
 
     [profileImage, profileCaption].forEach(child => {

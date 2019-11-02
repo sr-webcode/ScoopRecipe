@@ -150,85 +150,6 @@
       ]
     },
     {
-      "uuid": "7f8e872d-47a5-44e6-b1ad-7b7cb94f1d30",
-      "title": "Italian Meatballs",
-      "description": "Quick, easy and authentic.",
-      "images": {
-        "full": "/img/italian_meatballs.jpg",
-        "medium": "/img/italian_meatballs--m.jpg",
-        "small": "/img/italian_meatballs--s.jpg"
-      },
-      "servings": 6,
-      "prepTime": 25,
-      "cookTime": 20,
-      "postDate": "02/19/2018 12:47:42 AM",
-      "editDate": "02/19/2018 01:12:05 AM",
-      "ingredients": [
-        {
-          "uuid": "3d810ba9-7e4e-48aa-b2e9-7918e38b358d",
-          "name": "egg, lightly beaten",
-          "amount": 1,
-          "measurement": "-"
-        },
-        {
-          "uuid": "6d5dce01-b305-4df1-875e-1354a048bcea",
-          "name": "dry bread crumbs",
-          "amount": 0.333,
-          "measurement": "cup"
-        },
-        {
-          "uuid": "0c62dd1d-7b0f-4471-ba06-df220177ae39",
-          "name": "parmesan cheese, grated",
-          "amount": 0.25,
-          "measurement": "cup"
-        },
-        {
-          "uuid": "aa1ff525-4190-4a66-8d12-3f383a752b55",
-          "name": "milk",
-          "amount": 0.25,
-          "measurement": "cup"
-        },
-        {
-          "uuid": "6278b9e5-3862-44f8-97b0-5bd37bb70141",
-          "name": "onion, finely chopped",
-          "amount": 0.25,
-          "measurement": "cup"
-        },
-        {
-          "uuid": "62798278-2fbc-4c31-98de-b7959c191688",
-          "name": "ground italian sausage",
-          "amount": 1.25,
-          "measurement": "lbs"
-        }
-      ],
-      "directions": [
-        {
-          "instructions": "Preheat oven to 350°F.",
-          "optional": false
-        },
-        {
-          "instructions": "In a large bowl, combine the egg, bread crumbs, grated parmesan cheese, milk and onion.",
-          "optional": false
-        },
-        {
-          "instructions": "Add sausage to the bread crumb mixture and mix well.",
-          "optional": false
-        },
-        {
-          "instructions": "Shape into 20 meatballs; arrange on a shallow baking pan.",
-          "optional": false
-        },
-        {
-          "instructions": "Bake for 20 minutes or until meatballs are cooked through (160°F).",
-          "optional": false
-        },
-        {
-          "instructions": "Serve with your favorite sauce and spaghetti.",
-          "optional": true
-        }
-      ]
-    },
-    {
       "uuid": "3555aec3-47e1-44d4-b8f2-607aad5cee67",
       "title": "Kielbasa Skillet",
       "description": "A polish wonderful delicacy.",
@@ -478,6 +399,85 @@
         {
           "instructions": "Heat a large skillet over medium heat, and coat with cooking spray. Pour 1/4 cupfuls of batter onto the skillet, and cook until bubbles appear on the surface. Flip with a spatula, and cook until browned on the other side.",
           "optional": false
+        }
+      ]
+    },
+    {
+      "uuid": "7f8e872d-47a5-44e6-b1ad-7b7cb94f1d30",
+      "title": "Italian Meatballs",
+      "description": "Quick, easy and authentic.",
+      "images": {
+        "full": "/img/italian_meatballs.jpg",
+        "medium": "/img/italian_meatballs--m.jpg",
+        "small": "/img/italian_meatballs--s.jpg"
+      },
+      "servings": 4,
+      "prepTime": 25,
+      "cookTime": 20,
+      "postDate": "02/19/2018 12:47:42 AM",
+      "editDate": "02/19/2018 01:12:05 AM",
+      "ingredients": [
+        {
+          "uuid": "3d810ba9-7e4e-48aa-b2e9-7918e38b358d",
+          "name": "egg, lightly beaten",
+          "amount": 1,
+          "measurement": "-"
+        },
+        {
+          "uuid": "6d5dce01-b305-4df1-875e-1354a048bcea",
+          "name": "dry bread crumbs",
+          "amount": 0.333,
+          "measurement": "cup"
+        },
+        {
+          "uuid": "0c62dd1d-7b0f-4471-ba06-df220177ae39",
+          "name": "parmesan cheese, grated",
+          "amount": 0.25,
+          "measurement": "cup"
+        },
+        {
+          "uuid": "aa1ff525-4190-4a66-8d12-3f383a752b55",
+          "name": "milk",
+          "amount": 0.25,
+          "measurement": "cup"
+        },
+        {
+          "uuid": "6278b9e5-3862-44f8-97b0-5bd37bb70141",
+          "name": "onion, finely chopped",
+          "amount": 0.25,
+          "measurement": "cup"
+        },
+        {
+          "uuid": "62798278-2fbc-4c31-98de-b7959c191688",
+          "name": "ground italian sausage",
+          "amount": 1.25,
+          "measurement": "lbs"
+        }
+      ],
+      "directions": [
+        {
+          "instructions": "Preheat oven to 350°F.",
+          "optional": false
+        },
+        {
+          "instructions": "In a large bowl, combine the egg, bread crumbs, grated parmesan cheese, milk and onion.",
+          "optional": false
+        },
+        {
+          "instructions": "Add sausage to the bread crumb mixture and mix well.",
+          "optional": false
+        },
+        {
+          "instructions": "Shape into 20 meatballs; arrange on a shallow baking pan.",
+          "optional": false
+        },
+        {
+          "instructions": "Bake for 20 minutes or until meatballs are cooked through (160°F).",
+          "optional": false
+        },
+        {
+          "instructions": "Serve with your favorite sauce and spaghetti.",
+          "optional": true
         }
       ]
     },

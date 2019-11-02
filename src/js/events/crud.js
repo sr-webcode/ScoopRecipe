@@ -23,7 +23,6 @@ class DatabaseEvents {
 
     const request = this.specifyRequest();
 
-
     fetch(request)
       .then(res => {
         return res.json();
