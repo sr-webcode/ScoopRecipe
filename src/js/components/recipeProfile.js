@@ -1,6 +1,7 @@
 import RecipeSpecials from "./recipeSpecials";
 
 
+
 class RecipeProfile {
   constructor() {
     this.domCache();
@@ -114,8 +115,20 @@ class RecipeProfile {
         const { type, title, text } = matchList[0];
         [title, type, text].forEach((promo) => {
           const promoLi = document.createElement('li');
-          promoLi.innerHTML = promo;
+
+          //watch for p tags 
+          const watchParaElem = (elem) => {
+            const tempElem = document.createElement('span');
+            tempElem.innerHTML = elem;
+            const elemText = tempElem.querySelector('p').innerHTML;
+            return elemText;
+          }
+
+          const item = promo.indexOf('<p>') > -1 ? watchParaElem(promo) : promo;
+
+          promoLi.innerHTML = item;
           specialsTag.appendChild(promoLi);
+
         })
 
         item.textContent = `${amount ? amount : ""} ${

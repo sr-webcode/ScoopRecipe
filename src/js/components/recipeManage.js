@@ -41,7 +41,8 @@ class RecipeManage {
 
     recipeListingHeader.textContent = "Current Recipes";
     newRecordBtn.setAttribute('data-role', 'post');
-    newRecordBtn.textContent = "new record"
+    newRecordBtn.textContent = "new"
+
 
     const listItems = this.collateListItems(data);
 
@@ -71,9 +72,9 @@ class RecipeManage {
       btnGroup.classList.add("btn-group");
 
       title.textContent = item.title;
-      edit.textContent = "edit";
+      edit.textContent = "btn";
       edit.setAttribute("data-role", "patch");
-      del.textContent = "delete";
+      del.textContent = "btn";
       del.setAttribute("data-role", "delete");
       currentImage.setAttribute("src", `${item.images.small}`);
       listItem.setAttribute("data-title", item.title);

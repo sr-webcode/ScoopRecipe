@@ -199,6 +199,7 @@ class CentralEvents {
 
       case "post":
 
+
         this.resetViews();
         this.modalCurrentAction = target;
         this.tempViewName.textContent = "New Record";
@@ -213,6 +214,8 @@ class CentralEvents {
         break;
 
       case "patch":
+
+
         this.resetViews();
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;

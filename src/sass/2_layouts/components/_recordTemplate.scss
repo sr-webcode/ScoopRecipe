@@ -10,6 +10,7 @@
 }
 
 .record-template-wrapper {
+  background-color: #FAFAFA;
   box-shadow: 0 1px 4px rgba(20, 20, 20, 0.3);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -30,54 +31,61 @@
 .template-controls {
   list-style: none;
   display: flex;
-  margin-bottom: 10px;
   position: relative;
 
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    margin-bottom: -10px;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: rgba(3, 7, 17, 0.2);
-    border-radius: 3px;
+  i {
+    margin-right: 4px;
   }
+
+  // &::after {
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   margin-bottom: -5px;
+  //   width: 100%;
+  //   height: 2px;
+  //   background-color: rgba(3, 7, 17, 0.2);
+  //   border-radius: 3px;
+  // }
+
 }
 
 //temp nav buttons
 .temp-item {
+  display: inline-block;
   cursor: pointer;
-  padding: 10px;
-  background-color: rgb(0, 11, 34);
-  color: rgb(233, 168, 4);
+  padding: 6px 12px;
+  color: rgb(2, 14, 41);
   border-radius: 2px;
+  font-weight: normal;
+  background-color: rgba(3, 7, 17);
+  color: rgb(233, 168, 4);
 
   &:not(:first-child) {
-    margin-left: 5px;
+    margin-left: 7px;
   }
 
   &:hover {
     background-color: rgb(233, 168, 4);
-    color: rgb(0, 11, 34);
+    color: rgba(3, 7, 17);
   }
+
 }
 
 //panel containing different info about recipe
-
 .record-template-panel {
   display: none;
-  margin: 50px 0;
-  min-height: 250px;
+  margin: 20px 0 50px 0;
   position: relative;
+  min-height: 400px;
 }
 
 .record-template-btn {
   display: inline-block;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 30px;
   background-color: rgb(0, 11, 34);
   color: rgb(233, 168, 4);
   border-radius: 2px;
@@ -105,6 +113,7 @@
 
 .record-temp-label {
   font-size: 16px;
+  padding: 10px 0;
   font-weight: bold;
   color: rgb(0, 11, 34);
 }
@@ -119,7 +128,7 @@
   border-top-right-radius: 5px;
 
   li {
-    padding: 5px;
+    padding: 8px;
     text-align: center;
     flex: 1;
   }
