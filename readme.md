@@ -17,6 +17,5 @@ A simple food recipe web app that allows you to view, edit, update and delete ex
 3. Type npm run live
 4. View app on localhost:2020
 5. Read Project Notes(optional)
-
 ```
 

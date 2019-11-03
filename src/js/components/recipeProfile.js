@@ -1,7 +1,5 @@
 import RecipeSpecials from "./recipeSpecials";
 
-
-
 class RecipeProfile {
   constructor() {
     this.domCache();
@@ -19,11 +17,11 @@ class RecipeProfile {
 
   requestProfile(id) {
     this.recipeProfileWrapper.innerHTML = "<span class='loader'></span>";
-    const uri = "http://localhost:3001/recipes";
-    const detailsRequest = new Request(uri, {
-      method: "GET",
-      mode: "cors"
-    });
+    const uri = "http://localhost:3001/recipes",
+      detailsRequest = new Request(uri, {
+        method: "GET",
+        mode: "cors"
+      });
 
     fetch(detailsRequest)
       .then(res => {
@@ -44,14 +42,14 @@ class RecipeProfile {
 
   renderProfile(record) {
 
-    const { images } = record[0];
-    const docuFrag = document.createDocumentFragment(),
-      profileImage = document.createElement("div");
-    const profileCaption = this.extractInsRecipe(record);
+    const { images } = record[0],
+      docuFrag = document.createDocumentFragment(),
+      profileImage = document.createElement("div"),
+      profileCaption = this.extractInsRecipe(record),
+      img1 = document.createElement('img');
 
     //delay image loading   
     profileImage.className = "recipe-profile-image image-loading";
-    const img1 = document.createElement('img');
     img1.setAttribute('src', images.full);
     img1.onload = () => {
       const path = img1.getAttribute('src');
@@ -85,7 +83,6 @@ class RecipeProfile {
       serveInfo = document.createElement('p'),
       tatBox = document.createElement('div');
 
-
     caption.classList.add("recipe-profile-caption");
     recipeIngredientMaster.classList.add("recipe-profile-ingredients");
     recipeSteps.classList.add('recipe-profile-steps');
@@ -96,12 +93,10 @@ class RecipeProfile {
     serveInfo.textContent = `Servings: ${servings}`;
     tatBox.classList.add('recipe-tat-box');
 
-
     recipeTitle.textContent = title;
     recipeDesc.textContent = description;
     recipeIngridTitle.textContent = "Ingredients:";
     recipeStepsTitle.textContent = "Instructions:"
-
 
     ingredients.forEach(ingredient => {
       const item = document.createElement("li");
@@ -111,14 +106,16 @@ class RecipeProfile {
       })
 
       if (matchList.length > 0) {
+
         const specialsTag = document.createElement('ul');
         specialsTag.classList.add('recipe-promo-code');
 
         const { type, title, text } = matchList[0];
+
         [title, type, text].forEach((promo) => {
           const promoLi = document.createElement('li');
 
-          //watch for p tags 
+          //watch for p tags inside promo codes 
           const watchParaElem = (elem) => {
             const tempElem = document.createElement('span');
             tempElem.innerHTML = elem;
@@ -127,7 +124,6 @@ class RecipeProfile {
           }
 
           const item = promo.indexOf('<p>') > -1 ? watchParaElem(promo) : promo;
-
           promoLi.innerHTML = item;
           specialsTag.appendChild(promoLi);
 
@@ -143,13 +139,13 @@ class RecipeProfile {
           measurement ? measurement : "-"
           } ${name}`;
       }
-
       recipeIngredientMaster.appendChild(item);
     });
 
     directions.forEach((step) => {
-      const { instructions, optional } = step;
-      const li = document.createElement('li');
+      const { instructions, optional } = step,
+        li = document.createElement('li');
+
       if (optional) {
         li.textContent = instructions + '(optional)';
         recipeSteps.appendChild(li)
@@ -159,12 +155,9 @@ class RecipeProfile {
       recipeSteps.appendChild(li)
     });
 
-
-
     [prepTimeInfo, cookTimeInfo, serveInfo].forEach((child) => {
       tatBox.appendChild(child);
     });
-
 
     [
       recipeTitle,
@@ -180,7 +173,6 @@ class RecipeProfile {
 
     caption.appendChild(docuFrag);
     return caption;
-
   }
 
   show(id) {

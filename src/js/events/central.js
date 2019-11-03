@@ -30,7 +30,6 @@ class CentralEvents {
   }
 
   domCache() {
-
     this.siteNav = document.querySelectorAll("[data-nav-role]");
     this.recipeListing = document.querySelector(".recipe-listing > .container");
     this.recipeProfile = document.querySelector(".recipe-profile > .container");
@@ -64,6 +63,7 @@ class CentralEvents {
   }
 
   setEvents() {
+
     //header navigation
     this.siteNav.forEach(nav => {
       nav.addEventListener("click", this.toggleViews);
@@ -107,10 +107,9 @@ class CentralEvents {
     this.addStepsRow.addEventListener('click', this.stepRowsAdd);
   }
 
-  //specific events
+  // --------------------------------------------------specific events
   toggleViews(e) {
     this.mobileMenu.classList.remove("slide-mobile");
-
     e.preventDefault();
     const target = e.target.getAttribute("data-nav-role");
     this.resetViews();

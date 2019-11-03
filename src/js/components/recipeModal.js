@@ -27,7 +27,6 @@ class RecipeModal {
       case "patch":
         this.modalText.textContent = `Updating record to the database, are you satisfied with your current inputs?`;
         this.fontAwesome.className = 'fas fa-edit';
-
         break;
       case "delete":
         this.modalText.textContent = `Are you sure you want to delete ${title}?`;

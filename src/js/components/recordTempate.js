@@ -1,8 +1,6 @@
 
 class RecordTemplate {
-
   constructor() {
-
     this.domCache();
     this.recordLookup = this.recordLookup.bind(this);
     this.showPatchTemplate = this.showPatchTemplate.bind(this);
@@ -109,8 +107,7 @@ class RecordTemplate {
     cookLabel.textContent = "Cook Time (min)";
     servingsLabel.textContent = "Servings (amount)";
 
-
-    //add class
+    //add class to each nested elem inside row
     const fields = [
       titleLabel,
       titleField,
@@ -123,12 +120,11 @@ class RecordTemplate {
       servingsLabel,
       servingsField
     ];
-
     this.classMarker(fields);
-    //append to fragmenter
+
+    //append all data to fragmenter
     const data = this.dataFragmenter(fields);
     this.recordInitView.appendChild(data);
-
   }
 
   ingredientsTemplate(data) {
@@ -142,7 +138,7 @@ class RecordTemplate {
       delRowsBtn = document.createElement('span');
 
 
-    //base classes
+    //add classes
     ingHeaderGroup.classList.add("record-temp-header");
     ingredientMasterContainer.classList.add("record-temp-master");
     addRowsBtn.classList.add('template-rows-btn');
@@ -363,7 +359,6 @@ class RecordTemplate {
         : [dirHeaderGroup, directionsMaster, addRowsBtn, delRowsBtn]
     );
     this.recordStepView.appendChild(masterData);
-
   }
 
   classMarker(fields) {
@@ -403,7 +398,6 @@ class RecordTemplate {
   show(uuid, action) {
     this.action = action;
     this.recordTemp.style.setProperty("display", "block");
-
     switch (action.toLowerCase()) {
       case "post":
         this.existingRecord = false;
@@ -418,7 +412,6 @@ class RecordTemplate {
         break;
     }
   }
-
 
 }
 

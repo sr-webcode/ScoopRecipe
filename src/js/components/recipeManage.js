@@ -34,17 +34,15 @@ class RecipeManage {
 
     const recipeListing = document.createElement("div"),
       recipeListingHeader = document.createElement("h3"),
-      newRecordBtn = document.createElement('span');
+      newRecordBtn = document.createElement('span'),
+      listItems = this.collateListItems(data);
 
     recipeListing.classList.add("recipe-manage-listing");
     newRecordBtn.classList.add('add-btn');
 
     recipeListingHeader.textContent = "Current Recipes";
     newRecordBtn.setAttribute('data-role', 'post');
-    newRecordBtn.textContent = "new"
-
-
-    const listItems = this.collateListItems(data);
+    newRecordBtn.textContent = "new";
 
     [recipeListingHeader, listItems, newRecordBtn].forEach(child => {
       recipeListing.appendChild(child);
