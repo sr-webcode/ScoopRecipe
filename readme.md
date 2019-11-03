@@ -7,7 +7,7 @@ A simple food recipe web app that allows you to view, edit, update and delete ex
 
 ![ScreenShot](/screenshots/xshotMain.png)
 
-![ScreenShot](/screenshots/xshotControl.jpg)
+![ScreenShot](/screenshots/xshotMobile.png)
 
 ## Local Installation
 
