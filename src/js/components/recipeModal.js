@@ -21,7 +21,7 @@ class RecipeModal {
   show(target, title) {
     switch (target) {
       case "post":
-        this.modalText.textContent = `Appending new record to the database, are you satisfied with the current inputs?`;
+        this.modalText.textContent = `Appending new record to the database, are you satisfied with your current inputs?`;
         this.fontAwesome.className = 'fas fa-clipboard-check';
         break;
       case "patch":

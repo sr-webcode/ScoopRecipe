@@ -54,9 +54,7 @@ class RecipeProfile {
     img1.onload = () => {
       const path = img1.getAttribute('src');
       profileImage.style.setProperty("background-image", `url(${path})`);
-      setTimeout(() => {
-        profileImage.classList.remove('image-loading')
-      }, 1000);
+      profileImage.classList.remove('image-loading')
     }
 
     [profileImage, profileCaption].forEach(child => {
@@ -112,7 +110,7 @@ class RecipeProfile {
 
         const { type, title, text } = matchList[0];
 
-        [title, type, text].forEach((promo) => {
+        [text, title, type].forEach((promo) => {
           const promoLi = document.createElement('li');
 
           //watch for p tags inside promo codes 
