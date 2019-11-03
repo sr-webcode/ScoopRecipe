@@ -50,7 +50,6 @@ class CentralEvents {
     this.crudAddOrUpdate = this.crudAddOrUpdate.bind(this);
     this.addIngredientRow = document.querySelector('div[data-temp-role="ing"]');
     this.addStepsRow = document.querySelector('div[data-temp-role="steps"]');
-
   }
 
   setComponentInstances() {
@@ -68,46 +67,37 @@ class CentralEvents {
     this.siteNav.forEach(nav => {
       nav.addEventListener("click", this.toggleViews);
     });
-
     //recipe profile selection
     this.recipeListing.addEventListener("click", this.viewRecipeProfile);
-
     //burger menu
     this.burger.addEventListener("click", this.toggleMobileMenu);
-
     //mobile close btn
     this.closeMobilebutton.addEventListener("click", this.toggleMobileMenu);
-
     //search event
     this.btnSearch.addEventListener("click", this.searchRecipe);
-
     //managing recipes
     this.recipeManageMenu.addEventListener("click", this.menuControls);
-
     //modal responses
     this.modalActions.forEach(modal => {
       modal.addEventListener("click", this.modalResponse);
     });
-
     //template controls for add and edit for temp views
     this.recordTemplateControl.addEventListener("click", this.toggleTempViews);
-
     //back btn
     this.tempBackBtn.addEventListener("click", () => {
       this.resetTempViews();
       this.resetViews();
       this.recipeManage.show();
     });
-
     //crud button on update and add
     this.tempCrudBtn.addEventListener("click", this.crudAddOrUpdate);
-
     //rows add
     this.addIngredientRow.addEventListener('click', this.ingRowsAdd);
     this.addStepsRow.addEventListener('click', this.stepRowsAdd);
   }
 
-  // --------------------------------------------------specific events
+  // --------------------------- specific events ---------------------------\\
+
   toggleViews(e) {
     this.mobileMenu.classList.remove("slide-mobile");
     e.preventDefault();

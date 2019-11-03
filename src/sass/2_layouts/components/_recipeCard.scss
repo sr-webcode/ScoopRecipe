@@ -10,19 +10,21 @@
   box-shadow: 0 0 4px rgba(20, 20, 20, 0.3);
   color: #000b22;
   overflow: hidden;
+
   &:hover {
     .recipe-card-caption {
       transform: translateY(0);
     }
+
     .recipe-card-image {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
   }
 
   @include respond-to(medium) {
     width: 45%;
-    margin-top: 5px;
   }
+
   @include respond-to(large) {
     width: 30%;
   }
@@ -35,6 +37,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   transition: transform 0.3s ease;
+  overflow: hidden;
 }
 
 .recipe-card-caption {
@@ -51,6 +54,8 @@
   justify-content: center;
   transform: translateY(100%);
   transition: transform 0.3s ease;
+  overflow: hidden;
+
   p {
     margin-top: 4px;
   }

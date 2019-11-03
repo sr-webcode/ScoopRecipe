@@ -358,7 +358,9 @@ class RecordTemplate {
         [dirHeaderGroup, directionsMaster]
         : [dirHeaderGroup, directionsMaster, addRowsBtn, delRowsBtn]
     );
+
     this.recordStepView.appendChild(masterData);
+
   }
 
   classMarker(fields) {
