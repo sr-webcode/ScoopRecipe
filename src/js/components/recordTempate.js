@@ -216,7 +216,12 @@ class RecordTemplate {
     });
 
     //fragment level append
-    const masterFragment = this.dataFragmenter([ingHeaderGroup, ingredientMasterContainer, addRowsBtn, delRowsBtn]);
+    const masterFragment = this.dataFragmenter([
+      ingHeaderGroup,
+      ingredientMasterContainer,
+      addRowsBtn,
+      delRowsBtn
+    ]);
 
     this.recordIngView.appendChild(masterFragment);
   }
@@ -230,7 +235,6 @@ class RecordTemplate {
       delRowsBtn = document.createElement("span");
 
     if (this.existingRecord) {
-      
       //iterate through each direction
 
       const { directions } = objData;
@@ -246,7 +250,7 @@ class RecordTemplate {
 
         insText.setAttribute("type", "text");
         insText.setAttribute("name", "instructions");
-        insOptional.setAttribute("name", "optional");       
+        insOptional.setAttribute("name", "optional");
 
         isTrue.textContent = "true";
         isFalse.textContent = "false";
@@ -318,7 +322,12 @@ class RecordTemplate {
     dirHeaderGroup.appendChild(headerItems);
 
     //master data
-    const masterData = this.dataFragmenter([dirHeaderGroup, directionsMaster, addRowsBtn, delRowsBtn]);
+    const masterData = this.dataFragmenter([
+      dirHeaderGroup,
+      directionsMaster,
+      addRowsBtn,
+      delRowsBtn
+    ]);
 
     this.recordStepView.appendChild(masterData);
   }

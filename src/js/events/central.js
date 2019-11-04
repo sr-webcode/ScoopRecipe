@@ -47,6 +47,7 @@ class CentralEvents {
     this.modalActions = document.querySelectorAll(".recipe-modal-act");
     this.recordTemplateControl = document.querySelector(".template-controls");
     this.tempViews = document.querySelectorAll("div[data-temp-role]");
+    this.tempMenu = document.querySelectorAll("li[data-temp-role]");
     this.tempBackBtn = document.querySelector('span[data-out-role="back"]');
     this.tempCrudBtn = document.querySelector("span[data-crud-role]");
     this.tempViewName = document.querySelector(".record-template-name");
@@ -81,9 +82,9 @@ class CentralEvents {
     this.recipeManageMenu.addEventListener("click", this.menuControls);
 
     //modal responses
-    this.modalActions.forEach((action) => {
+    this.modalActions.forEach(action => {
       action.addEventListener("click", this.modalResponse);
-    })
+    });
 
     //template controls for add and edit for temp views
     this.recordTemplateControl.addEventListener("click", this.toggleTempViews);
@@ -229,10 +230,13 @@ class CentralEvents {
     const role = e.target.getAttribute("data-temp-role");
     if (role) {
       this.resetTempViews();
-
       const currentTempView = document.querySelector(
         `div[data-temp-role='${role}']`
       );
+      this.tempMenu.forEach(menu => {
+        menu.classList.remove("add-border");
+      });
+      e.target.classList.add("add-border");
       currentTempView.style.setProperty("display", "block");
     }
   }
@@ -246,8 +250,8 @@ class CentralEvents {
     const spanTarget = e.target.getAttribute("data-role");
     if (spanTarget) {
       const listMaster = e.target.parentElement.querySelector(
-        ".record-temp-master"
-      ),
+          ".record-temp-master"
+        ),
         inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
@@ -291,8 +295,8 @@ class CentralEvents {
     const spanTarget = e.target.getAttribute("data-role");
 
     const listMaster = e.target.parentElement.querySelector(
-      ".record-temp-master"
-    ),
+        ".record-temp-master"
+      ),
       insList = document.createElement("li"),
       insText = document.createElement("input"),
       insOptional = document.createElement("select"),
