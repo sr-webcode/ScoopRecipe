@@ -1,7 +1,7 @@
 # Scoop Recipe App
 
 ## About
-A simple food recipe web app that allows you to view, edit, update and delete exisitng recipes. Data are pulled from a local json-server.
+a simple recipe web app that allows you to view, edit, update and delete existing recipes. Data is pulled from a local json-server.
 
 ## Screenshots
 

@@ -282,6 +282,12 @@
           "name": "sprouts brussels",
           "amount": 5,
           "measurement": "pound"
+        },
+        {
+          "uuid": "22qi479b-23g1-6o0j-uaur-xo8pxc4825q4",
+          "name": "pepper",
+          "amount": 1,
+          "measurement": "teaspoon"
         }
       ],
       "directions": [
