@@ -5,8 +5,6 @@ const isDevelopment = process.env.NODE_ENV !== "production",
   { CleanWebpackPlugin } = require("clean-webpack-plugin"),
   filesCopy = require("copy-webpack-plugin");
 
-//begin config
-
 module.exports = {
   mode: isDevelopment ? "development" : "production",
   entry: path.resolve(__dirname, "./src/js/app.js"),

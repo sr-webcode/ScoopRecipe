@@ -44,7 +44,7 @@ class CentralEvents {
     this.recipeManageMenu = document.querySelector(
       ".recipe-manage > .container"
     );
-    this.modalActions = document.querySelectorAll(".recipe-modal-act");
+    this.modalAction = document.querySelector(".recipe-modal-act");
     this.recordTemplateControl = document.querySelector(".template-controls");
     this.tempViews = document.querySelectorAll("div[data-temp-role]");
     this.tempBackBtn = document.querySelector('span[data-out-role="back"]');
@@ -79,10 +79,10 @@ class CentralEvents {
     this.btnSearch.addEventListener("click", this.searchRecipe);
     //managing recipes
     this.recipeManageMenu.addEventListener("click", this.menuControls);
+
     //modal responses
-    this.modalActions.forEach(modal => {
-      modal.addEventListener("click", this.modalResponse);
-    });
+    this.modalAction.addEventListener("click", this.modalResponse);
+
     //template controls for add and edit for temp views
     this.recordTemplateControl.addEventListener("click", this.toggleTempViews);
     //back btn
@@ -188,6 +188,7 @@ class CentralEvents {
         this.tempCrudBtn.setAttribute("data-crud-role", "post");
         this.tempCrudBtn.textContent = "Add";
         this.recordTemplate.show("0", this.modalCurrentAction);
+        this.modalCategory = "recipes";
         break;
 
       case "patch":

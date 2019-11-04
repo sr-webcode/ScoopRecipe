@@ -15,12 +15,11 @@ class DatabaseEvents {
     this.event = event;
     this.id = id;
     this.category = category;
-    if (!this.event || !this.id) return;
+    if (!this.event) return;
     this.serverRequest();
   }
 
   serverRequest() {
-
     const request = this.specifyRequest();
 
     fetch(request)
@@ -42,10 +41,11 @@ class DatabaseEvents {
 
     switch (this.category) {
       case "recipes":
-        uri =
-          this.event === "delete" || this.event === "patch"
-            ? `http://localhost:3001/recipes/${this.id}`
-            : `http://localhost:3001/recipes`;
+        if (this.event === "delete" || this.event === "patch") {
+          uri = `http://localhost:3001/recipes/${this.id}`;
+        } else {
+          uri = "http://localhost:3001/recipes";
+        }
         break;
 
       case "specials":
@@ -60,6 +60,7 @@ class DatabaseEvents {
         return false;
     }
 
+   
     const dbRequest = new Request(uri, {
       method: this.event.toUpperCase(),
       mode: "cors",

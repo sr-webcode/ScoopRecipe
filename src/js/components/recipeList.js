@@ -5,7 +5,7 @@ class RecipeList {
     this.domCache();
   }
   init() {
-    this.show()
+    this.show();
   }
 
   domCache() {
@@ -30,11 +30,12 @@ class RecipeList {
       })
       .then(data => {
         if (!title) return this.extractList(data);
-        const filterData = data.filter((recipe) => {
+        const filterData = data.filter(recipe => {
           return recipe.title.toLowerCase().indexOf(title) != -1;
-        })
-        if (filterData.length > 0) return this.extractList(filterData)
-        this.recipeListingContainer.textContent = "the search yielded no results..."
+        });
+        if (filterData.length > 0) return this.extractList(filterData);
+        this.recipeListingContainer.textContent =
+          "the search yielded no results...";
       })
       .catch(err => {
         console.log(err);

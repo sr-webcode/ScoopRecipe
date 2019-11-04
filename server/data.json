@@ -17,7 +17,7 @@
       "ingredients": [
         {
           "uuid": "62798278-2fbc-4c31-98de-b7959c191688",
-          "name": "queso bratssss",
+          "name": "queso brats",
           "amount": 2,
           "measurement": "package (19 oz)"
         },
@@ -166,7 +166,7 @@
       "ingredients": [
         {
           "uuid": "3d810ba9-7e4e-48aa-b2e9-7918e38b358d",
-          "name": "kielbasa sausage",
+          "name": "kielbasa sausage and eggs",
           "amount": 4,
           "measurement": "package (13.5 oz)"
         },
@@ -241,7 +241,7 @@
     {
       "uuid": "3555aec3-47e1-44d4-b8f2-607aad5cee69",
       "title": "Brussels Chips",
-      "description": "Tasty, crispy, spicy and super healthy!",
+      "description": "Tasty, crispy, spicy and super healthy",
       "images": {
         "full": "/img/brussel_chips.jpg",
         "medium": "/img/brussel_chips--m.jpg",
@@ -334,63 +334,63 @@
       "ingredients": [
         {
           "uuid": "aa1ff525-4190-4a66-8d12-3f383a752b55",
+          "name": "milk",
           "amount": 1.5,
-          "measurement": "cups",
-          "name": "milk"
+          "measurement": "cups"
         },
         {
           "uuid": "d4fbd3ee-add4-4e86-b8bb-898a97d5be78",
+          "name": "white vinegar",
           "amount": 4,
-          "measurement": "tablespoons",
-          "name": "white vinegar"
+          "measurement": "tablespoons"
         },
         {
           "uuid": "811a6f12-428e-4110-abcd-508e4080bc5c",
+          "name": "all-purpose flour",
           "amount": 2,
-          "measurement": "cups",
-          "name": "all-purpose flour"
+          "measurement": "cups"
         },
         {
           "uuid": "28ed1238-648b-4559-a83c-5a2fb5f4ad25",
+          "name": "white sugar",
           "amount": 4,
-          "measurement": "tablespoons",
-          "name": "white sugar"
+          "measurement": "tablespoons"
         },
         {
           "uuid": "698345bd-078d-495f-b233-df1b756dd8a7",
+          "name": "baking powder",
           "amount": 2,
-          "measurement": "teaspoons",
-          "name": "baking powder"
+          "measurement": "teaspoons"
         },
         {
           "uuid": "6d4176cc-0c48-4e19-9d38-bb16578423a4",
+          "name": "baking soda",
           "amount": 1,
-          "measurement": "teaspoon",
-          "name": "baking soda"
+          "measurement": "teaspoon"
         },
         {
           "uuid": "210b15ac-552e-4450-b162-c0a41bb3389d",
+          "name": "salt",
           "amount": 1,
-          "measurement": "teaspoon",
-          "name": "salt"
+          "measurement": "teaspoon"
         },
         {
           "uuid": "3d810ba9-7e4e-48aa-b2e9-7918e38b358d",
+          "name": "eggs",
           "amount": 2,
-          "measurement": "",
-          "name": "eggs"
+          "measurement": "-"
         },
         {
           "uuid": "77ae45d7-659b-4cb5-a4ea-07f00e442974",
+          "name": "butter, melted",
           "amount": 4,
-          "measurement": "tablespoons",
-          "name": "butter, melted"
+          "measurement": "tablespoons"
         },
         {
           "uuid": "c8be68ed-d83b-4e6c-ba7a-082d3dc167f4",
-          "amount": null,
-          "measurement": "",
-          "name": "cooking spray"
+          "name": "cooking spray",
+          "amount": 1,
+          "measurement": "-"
         }
       ],
       "directions": [
