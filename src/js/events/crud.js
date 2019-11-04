@@ -30,11 +30,11 @@ class DatabaseEvents {
       .then(res => {
         this.recipeManage.show();
         this.recipeTemplate.hide();
+        this.recipeTemplate.clearTemplateData();
       })
       .catch(err => {
         console.log(err);
       });
-
   }
 
   specifyRequest() {
@@ -42,14 +42,18 @@ class DatabaseEvents {
 
     switch (this.category) {
       case "recipes":
-        uri = this.event === "delete" || this.event === "patch" ?
-          `http://localhost:3001/recipes/${this.id}` : `http://localhost:3001/recipes`;
+        uri =
+          this.event === "delete" || this.event === "patch"
+            ? `http://localhost:3001/recipes/${this.id}`
+            : `http://localhost:3001/recipes`;
         break;
 
       case "specials":
         //no specials ui yet
-        uri = this.event === "delete" || this.event === "patch" ?
-          `http://localhost:3001/specials/${isDelPatch && this.id}` : `http://localhost:3001/specials`;
+        uri =
+          this.event === "delete" || this.event === "patch"
+            ? `http://localhost:3001/specials/${isDelPatch && this.id}`
+            : `http://localhost:3001/specials`;
         break;
 
       default:
@@ -62,14 +66,16 @@ class DatabaseEvents {
       headers: new Headers({
         "Content-Type": "application/json"
       }),
-      body: ["post", "patch"].indexOf(this.event) > -1 ? this.defineRequestBody() : ""
+      body:
+        ["post", "patch"].indexOf(this.event) > -1
+          ? this.defineRequestBody()
+          : ""
     });
 
     return dbRequest;
   }
 
   defineRequestBody() {
-
     const data = this.gatherData();
 
     switch (this.event) {
@@ -81,22 +87,25 @@ class DatabaseEvents {
             medium: "/img/temp_medium.jpg",
             small: "/img/temp_small.jpg"
           }
-        })
-        return JSON.stringify(newData)
+        });
+        return JSON.stringify(newData);
       case "patch":
-
         return JSON.stringify(data);
       default:
-        console.log(`something went wrong`)
+        console.log(`something went wrong`);
     }
-
   }
 
   gatherData() {
-
-    const basicPanelItems = document.querySelectorAll('div[data-temp-role="init"] > .record-temp-field'),
-      ingPanelItems = document.querySelectorAll('div[data-temp-role="ing"] > .record-temp-master > li'),
-      stepsPanelItems = document.querySelectorAll('div[data-temp-role="steps"] > .record-temp-master > li');
+    const basicPanelItems = document.querySelectorAll(
+        'div[data-temp-role="init"] > .record-temp-field'
+      ),
+      ingPanelItems = document.querySelectorAll(
+        'div[data-temp-role="ing"] > .record-temp-master > li'
+      ),
+      stepsPanelItems = document.querySelectorAll(
+        'div[data-temp-role="steps"] > .record-temp-master > li'
+      );
 
     //startin info data
     const basicData = Array.from(basicPanelItems)
@@ -113,7 +122,7 @@ class DatabaseEvents {
         return accum;
       }, {});
 
-    //ingredients data 
+    //ingredients data
     const ingData = Array.from(ingPanelItems).map(each => {
       const nestedRows = Array.from(
         each.querySelectorAll(".record-temp-field")
@@ -132,23 +141,26 @@ class DatabaseEvents {
     });
 
     //steps data
-    const stepsData = Array.from(stepsPanelItems).map((each) => {
-      const nestedRows = Array.from(each.querySelectorAll('.record-temp-field')).map((data) => {
+    const stepsData = Array.from(stepsPanelItems).map(each => {
+      const nestedRows = Array.from(
+        each.querySelectorAll(".record-temp-field")
+      ).map(data => {
         return {
           [data.name]: data.value
-        }
+        };
       });
       return {
         instructions: nestedRows[0].instructions,
         optional: nestedRows[1].optional === "false" ? false : true
-      }
-    })
+      };
+    });
 
-    const overAllData = Object.assign({}, basicData, { ingredients: [...ingData], directions: [...stepsData] })
+    const overAllData = Object.assign({}, basicData, {
+      ingredients: [...ingData],
+      directions: [...stepsData]
+    });
     return overAllData;
-
   }
-
 }
 
 export default DatabaseEvents;

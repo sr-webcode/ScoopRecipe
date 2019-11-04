@@ -1,4 +1,3 @@
-
 class RecordTemplate {
   constructor() {
     this.domCache();
@@ -11,6 +10,7 @@ class RecordTemplate {
     this.classMarker = this.classMarker.bind(this);
     this.clearTemplateData = this.clearTemplateData.bind(this);
     this.showNewTemplate = this.showNewTemplate.bind(this);
+    this.editTemplateLoad = this.editTemplateLoad.bind(this);
   }
 
   init() {
@@ -41,7 +41,6 @@ class RecordTemplate {
       })
       .then(data => {
         this.showPatchTemplate(data);
-        this.recordInitView.style.setProperty("display", "block");
       })
       .catch(err => {
         console.log(err);
@@ -56,7 +55,6 @@ class RecordTemplate {
   }
 
   basicTemplate(objData) {
-
     const titleField = document.createElement("input"),
       descField = document.createElement("textarea"),
       prepField = document.createElement("input"),
@@ -90,7 +88,6 @@ class RecordTemplate {
     prepField.value = 0;
     cookField.value = 0;
     servingsField.value = 0;
-
 
     if (this.existingRecord) {
       const { title, description, prepTime, cookTime, servings } = objData;
@@ -128,25 +125,21 @@ class RecordTemplate {
   }
 
   ingredientsTemplate(data) {
-
     const ingHeaderGroup = document.createElement("ul"),
       ingHeader1 = document.createElement("li"),
       ingHeader2 = document.createElement("li"),
       ingHeader3 = document.createElement("li"),
       ingredientMasterContainer = document.createElement("ul"),
-      addRowsBtn = document.createElement('span'),
-      delRowsBtn = document.createElement('span');
-
+      addRowsBtn = document.createElement("span"),
+      delRowsBtn = document.createElement("span");
 
     //add classes
     ingHeaderGroup.classList.add("record-temp-header");
     ingredientMasterContainer.classList.add("record-temp-master");
-    addRowsBtn.classList.add('template-rows-btn');
-    delRowsBtn.classList.add('template-rows-btn');
-
+    addRowsBtn.classList.add("template-rows-btn");
+    delRowsBtn.classList.add("template-rows-btn");
 
     if (this.existingRecord) {
-
       //iterate through ingredient list if existing record
       const ingredientListing = data.ingredients;
 
@@ -175,15 +168,12 @@ class RecordTemplate {
           inputList.appendChild(child);
         });
         return inputList;
-
       });
 
       //initial append for data rows
       const initList = this.dataFragmenter(ingTree);
       ingredientMasterContainer.appendChild(initList);
-
     } else {
-
       const inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
@@ -196,11 +186,9 @@ class RecordTemplate {
       inputAmt.setAttribute("name", "amount");
       inputMeasure.setAttribute("name", "measurement");
 
-
       inputText.placeholder = "ingredient name...";
       inputAmt.value = 0;
       inputMeasure.placeholder = "ingredient measure...";
-
 
       [inputText, inputAmt, inputMeasure].forEach(child => {
         child.classList.add("record-temp-field");
@@ -215,47 +203,33 @@ class RecordTemplate {
     ingHeader3.textContent = "Measure";
     addRowsBtn.textContent = "new row";
     delRowsBtn.textContent = "delete row";
-    addRowsBtn.setAttribute('data-role', 'newrow');
-    delRowsBtn.setAttribute('data-role', 'delrow');
-
+    addRowsBtn.setAttribute("data-role", "newrow");
+    delRowsBtn.setAttribute("data-role", "delrow");
 
     //initial append for header
     [ingHeader1, ingHeader2, ingHeader3].forEach(child => {
       ingHeaderGroup.appendChild(child);
     });
 
-
     //fragment level append
     const masterFragment = this.dataFragmenter(
-      this.existingRecord ?
-        [
-          ingHeaderGroup,
-          ingredientMasterContainer,
-        ] :
-        [
-          ingHeaderGroup,
-          ingredientMasterContainer,
-          addRowsBtn,
-          delRowsBtn
-        ]
+      this.existingRecord
+        ? [ingHeaderGroup, ingredientMasterContainer]
+        : [ingHeaderGroup, ingredientMasterContainer, addRowsBtn, delRowsBtn]
     );
 
     this.recordIngView.appendChild(masterFragment);
   }
 
   stepsTemplate(objData) {
-
-
     const directionsMaster = document.createElement("ul"),
       dirHeaderGroup = document.createElement("ul"),
       dirHeader1 = document.createElement("li"),
       dirHeader2 = document.createElement("li"),
-      addRowsBtn = document.createElement('span'),
-      delRowsBtn = document.createElement('span');
-
+      addRowsBtn = document.createElement("span"),
+      delRowsBtn = document.createElement("span");
 
     if (this.existingRecord) {
-
       //iterate through each direction
 
       const { directions } = objData;
@@ -275,7 +249,6 @@ class RecordTemplate {
         insText.setAttribute("type", "text");
         insText.setAttribute("name", "instructions");
         insOptional.setAttribute("name", "optional");
-
 
         //append data
         isTrue.textContent = "true";
@@ -298,15 +271,12 @@ class RecordTemplate {
 
       const currentList = this.dataFragmenter(directionData);
       directionsMaster.appendChild(currentList);
-
     } else {
-
       const insList = document.createElement("li"),
         insText = document.createElement("input"),
         insOptional = document.createElement("select"),
         isTrue = document.createElement("option"),
         isFalse = document.createElement("option");
-
 
       insText.classList.add("record-temp-field");
       insOptional.classList.add("record-temp-field");
@@ -322,8 +292,7 @@ class RecordTemplate {
         insOptional.appendChild(elem);
       });
 
-
-      insText.placeholder = "type specific instructions...."
+      insText.placeholder = "type specific instructions....";
       insOptional.selectedIndex = 1;
 
       [insText, insOptional].forEach(elem => {
@@ -336,17 +305,16 @@ class RecordTemplate {
     //set base styles
     directionsMaster.classList.add("record-temp-master");
     dirHeaderGroup.classList.add("record-temp-header");
-    addRowsBtn.classList.add('template-rows-btn');
-    delRowsBtn.classList.add('template-rows-btn');
+    addRowsBtn.classList.add("template-rows-btn");
+    delRowsBtn.classList.add("template-rows-btn");
 
     //set data
     dirHeader1.textContent = "Instructions";
     dirHeader2.textContent = "Optional";
-    addRowsBtn.textContent = "new row"
-    delRowsBtn.textContent = "delete row"
-    addRowsBtn.setAttribute('data-role', 'newrow');
-    delRowsBtn.setAttribute('data-role', 'delrow');
-
+    addRowsBtn.textContent = "new row";
+    delRowsBtn.textContent = "delete row";
+    addRowsBtn.setAttribute("data-role", "newrow");
+    delRowsBtn.setAttribute("data-role", "delrow");
 
     //base append for header
     const headerItems = this.dataFragmenter([dirHeader1, dirHeader2]);
@@ -354,13 +322,12 @@ class RecordTemplate {
 
     //master data
     const masterData = this.dataFragmenter(
-      this.existingRecord ?
-        [dirHeaderGroup, directionsMaster]
+      this.existingRecord
+        ? [dirHeaderGroup, directionsMaster]
         : [dirHeaderGroup, directionsMaster, addRowsBtn, delRowsBtn]
     );
 
     this.recordStepView.appendChild(masterData);
-
   }
 
   classMarker(fields) {
@@ -382,7 +349,7 @@ class RecordTemplate {
   clearTemplateData() {
     this.recordInitView.innerHTML = "";
     this.recordIngView.innerHTML = "";
-    this.recordStepView.innerHTML = "";
+    this.recordStepView.innerHTML = "";    
   }
 
   showNewTemplate() {
@@ -391,6 +358,14 @@ class RecordTemplate {
     this.ingredientsTemplate();
     this.stepsTemplate();
     this.recordInitView.style.setProperty("display", "block");
+  }
+
+  editTemplateLoad() {
+    this.clearTemplateData();
+    this.recordInitView.style.setProperty("display", "block");
+    this.recordInitView.innerHTML = "<span class='loader'/>";
+    this.recordIngView.innerHTML = "<span class='loader'/>";
+    this.recordStepView.innerHTML = "<span class='loader'/>";
   }
 
   hide() {
@@ -407,6 +382,7 @@ class RecordTemplate {
         break;
       case "patch":
         this.existingRecord = true;
+        this.editTemplateLoad();
         this.recordLookup(uuid);
         break;
       default:
@@ -414,7 +390,6 @@ class RecordTemplate {
         break;
     }
   }
-
 }
 
 export default RecordTemplate;

@@ -17,7 +17,7 @@
       "ingredients": [
         {
           "uuid": "62798278-2fbc-4c31-98de-b7959c191688",
-          "name": "queso brat",
+          "name": "queso bratssss",
           "amount": 2,
           "measurement": "package (19 oz)"
         },
@@ -184,7 +184,7 @@
         },
         {
           "uuid": "77ae45d7-659b-4cb5-a4ea-07f00e442974",
-          "name": "butter",
+          "name": "butters",
           "amount": 2,
           "measurement": "tablespoons"
         },
@@ -196,19 +196,19 @@
         },
         {
           "uuid": "e616c374-ed92-4b99-81c2-f73d180601e8",
-          "name": "dried thyme",
+          "name": "dried thymes",
           "amount": 0.5,
           "measurement": "teaspoon"
         },
         {
           "uuid": "210b15ac-552e-4450-b162-c0a41bb3389d",
-          "name": "salt",
+          "name": "salts",
           "amount": 0.25,
           "measurement": "teaspoon"
         },
         {
           "uuid": "5fc6a47f-7ef4-48ab-a5d9-384417dc63cf",
-          "name": "black pepper",
+          "name": "black peppers",
           "amount": 0.25,
           "measurement": "teaspoon"
         },
@@ -485,8 +485,8 @@
       "title": "Chicken Tortilla Wraps",
       "description": "Breakfast in a \"rush\" tortilla.",
       "prepTime": 5,
-      "cookTime": 10,
-      "servings": 4,
+      "cookTime": 5,
+      "servings": 5,
       "ingredients": [
         {
           "uuid": "null",
@@ -496,9 +496,9 @@
         },
         {
           "uuid": "null",
-          "name": "Tortilla Wraps",
-          "amount": 2,
-          "measurement": "Slice"
+          "name": "Tortilla Wrappers",
+          "amount": 4,
+          "measurement": "thin sliced"
         }
       ],
       "directions": [
@@ -511,8 +511,8 @@
           "optional": true
         },
         {
-          "instructions": "eat with your friends",
-          "optional": false
+          "instructions": "eat alone",
+          "optional": true
         }
       ],
       "images": {

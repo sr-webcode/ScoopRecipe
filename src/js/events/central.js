@@ -15,7 +15,7 @@ class CentralEvents {
     this.menuControls = this.menuControls.bind(this);
     this.toggleTempViews = this.toggleTempViews.bind(this);
     this.ingRowsAdd = this.ingRowsAdd.bind(this);
-    this.stepRowsAdd = this.stepRowsAdd.bind(this)
+    this.stepRowsAdd = this.stepRowsAdd.bind(this);
     this.modalResponse = this.modalResponse.bind(this);
     this.modalCurrentAction = null;
     this.modalCurrentRecord = null;
@@ -40,7 +40,9 @@ class CentralEvents {
     this.btnSearch = document.querySelector("#btnSearch");
     this.txtSearch = document.querySelector("#txtSearch");
     this.recipeSearch = document.querySelector(".recipe-search");
-    this.recipeManageMenu = document.querySelector(".recipe-manage > .container");
+    this.recipeManageMenu = document.querySelector(
+      ".recipe-manage > .container"
+    );
     this.modalActions = document.querySelectorAll(".recipe-modal-act");
     this.recordTemplateControl = document.querySelector(".template-controls");
     this.tempViews = document.querySelectorAll("div[data-temp-role]");
@@ -62,7 +64,6 @@ class CentralEvents {
   }
 
   setEvents() {
-
     //header navigation
     this.siteNav.forEach(nav => {
       nav.addEventListener("click", this.toggleViews);
@@ -92,8 +93,8 @@ class CentralEvents {
     //crud button on update and add
     this.tempCrudBtn.addEventListener("click", this.crudAddOrUpdate);
     //rows add
-    this.addIngredientRow.addEventListener('click', this.ingRowsAdd);
-    this.addStepsRow.addEventListener('click', this.stepRowsAdd);
+    this.addIngredientRow.addEventListener("click", this.ingRowsAdd);
+    this.addStepsRow.addEventListener("click", this.stepRowsAdd);
   }
 
   // --------------------------- specific events ---------------------------\\
@@ -113,7 +114,6 @@ class CentralEvents {
         this.recipeList.show();
         break;
       case "manage":
-
         this.recipeSearch.style.setProperty("display", "none");
         this.resetViews();
         this.resetTempViews();
@@ -171,7 +171,6 @@ class CentralEvents {
   }
 
   menuControls(e) {
-
     const targetElem = e.target,
       baseParent = targetElem.parentElement.parentElement,
       id = baseParent.getAttribute("data-id"),
@@ -180,29 +179,25 @@ class CentralEvents {
       target = targetElem.getAttribute("data-role");
 
     switch (target) {
-
       case "post":
         this.resetViews();
+        this.resetTempViews();
         this.modalCurrentAction = target;
         this.tempViewName.textContent = "New Record";
         this.tempCrudBtn.setAttribute("data-crud-role", "post");
         this.tempCrudBtn.textContent = "Add";
-
-        this.recordTemplate.show(
-          "0",
-          this.modalCurrentAction
-        );
+        this.recordTemplate.show("0", this.modalCurrentAction);
         break;
 
       case "patch":
         this.resetViews();
+        this.resetTempViews();
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;
         this.modalCategory = category;
         this.tempViewName.textContent = title;
         this.tempCrudBtn.setAttribute("data-crud-role", "patch");
         this.tempCrudBtn.textContent = "Update";
-
         this.recordTemplate.show(
           this.modalCurrentRecord,
           this.modalCurrentAction
@@ -244,9 +239,11 @@ class CentralEvents {
   }
 
   ingRowsAdd(e) {
-    const spanTarget = e.target.getAttribute('data-role');
+    const spanTarget = e.target.getAttribute("data-role");
     if (spanTarget) {
-      const listMaster = e.target.parentElement.querySelector('.record-temp-master'),
+      const listMaster = e.target.parentElement.querySelector(
+          ".record-temp-master"
+        ),
         inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
@@ -270,8 +267,8 @@ class CentralEvents {
           listMaster.appendChild(inputList);
           break;
         case "delrow":
-          const listItems = listMaster.querySelectorAll('li');
-          const lastItem = listMaster.querySelector('li:last-child');
+          const listItems = listMaster.querySelectorAll("li");
+          const lastItem = listMaster.querySelector("li:last-child");
           if (listItems.length < 2) {
             //return modal for not removing last record
             return;
@@ -279,16 +276,17 @@ class CentralEvents {
           listMaster.removeChild(lastItem);
           break;
         default:
-          return
+          return;
       }
     }
   }
 
   stepRowsAdd(e) {
+    const spanTarget = e.target.getAttribute("data-role");
 
-    const spanTarget = e.target.getAttribute('data-role');
-
-    const listMaster = e.target.parentElement.querySelector('.record-temp-master'),
+    const listMaster = e.target.parentElement.querySelector(
+        ".record-temp-master"
+      ),
       insList = document.createElement("li"),
       insText = document.createElement("input"),
       insOptional = document.createElement("select"),
@@ -296,7 +294,6 @@ class CentralEvents {
       isFalse = document.createElement("option");
 
     if (spanTarget) {
-
       switch (spanTarget) {
         case "newrow":
           insText.classList.add("record-temp-field");
@@ -309,7 +306,7 @@ class CentralEvents {
           [isTrue, isFalse].forEach(elem => {
             insOptional.appendChild(elem);
           });
-          insText.placeholder = "type specific instructions...."
+          insText.placeholder = "type specific instructions....";
           insOptional.selectedIndex = 1;
           [insText, insOptional].forEach(elem => {
             insList.appendChild(elem);
@@ -317,19 +314,17 @@ class CentralEvents {
           listMaster.appendChild(insList);
           break;
         case "delrow":
-          const listItems = listMaster.querySelectorAll('li');
-          const lastItem = listMaster.querySelector('li:last-child');
+          const listItems = listMaster.querySelectorAll("li");
+          const lastItem = listMaster.querySelector("li:last-child");
           if (listItems.length < 2) {
             //return modal for not removing last record
             return;
           }
-          listMaster.removeChild(lastItem)
+          listMaster.removeChild(lastItem);
           break;
         default:
-          return
+          return;
       }
-
-
     }
   }
 }
