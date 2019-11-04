@@ -482,36 +482,78 @@
       ]
     },
     {
-      "title": "Chicken Tortilla Wraps",
-      "description": "Breakfast in a \"rush\" tortilla.",
-      "prepTime": 5,
-      "cookTime": 5,
-      "servings": 5,
+      "title": "Chicken tikka masala",
+      "description": "Dish of chunks of roasted marinated chicken in a spiced curry sauce.",
+      "prepTime": 10,
+      "cookTime": 35,
+      "servings": 4,
       "ingredients": [
         {
-          "uuid": "null",
-          "name": "Chicken",
+          "uuid": "v4p03cx6-sfax-rl85-jb2u-v70lj999320t",
+          "name": "basmati rice",
           "amount": 1,
-          "measurement": "quarter"
+          "measurement": "cup"
         },
         {
-          "uuid": "null",
-          "name": "Tortilla Wrappers",
-          "amount": 4,
-          "measurement": "thin sliced"
+          "uuid": "k8jy77v6-honr-i30v-9tf1-eni9w5bs51l3",
+          "name": "canola oil",
+          "amount": 1,
+          "measurement": "table spoon"
+        },
+        {
+          "uuid": "61pd24fu-cx66-4388-l1uu-vjk085lq2ns2",
+          "name": "boneless chicken",
+          "amount": 1.5,
+          "measurement": "pounds"
+        },
+        {
+          "uuid": "t44adyc5-80pl-95d4-92jc-r62a05vmw6u6",
+          "name": "garlic",
+          "amount": 3,
+          "measurement": "cloves, minced"
+        },
+        {
+          "uuid": "x8l6hsf7-mbp6-fh52-89bd-llj9f65h72w1",
+          "name": "heavy cream",
+          "amount": 1.5,
+          "measurement": "cup"
+        },
+        {
+          "uuid": "al43541g-8017-uf94-s78b-u75r4etq67do",
+          "name": "chicken stock",
+          "amount": 1,
+          "measurement": "cup"
+        },
+        {
+          "uuid": "58280jsa-jy3j-on98-y0l7-b2b9u32tyd94",
+          "name": "cilantro leaves",
+          "amount": 1,
+          "measurement": "strand, minced"
         }
       ],
       "directions": [
         {
-          "instructions": "Place Chicken inside wrapper",
+          "instructions": "In a large saucepan of 2 cups water, cook rice according to package instructions; set aside.",
           "optional": false
         },
         {
-          "instructions": "Apply flavor paste inside tortilla",
-          "optional": true
+          "instructions": "Heat canola oil in a large stockpot or Dutch oven over medium heat. Season chicken with salt and pepper, to taste. Add chicken and onion to the stockpot and cook until golden, about 4-5 minutes.",
+          "optional": false
         },
         {
-          "instructions": "eat alone",
+          "instructions": "Stir in tomato paste, garlic, ginger, garam masala, chili powder and turmeric until fragrant, about 1 minute.",
+          "optional": false
+        },
+        {
+          "instructions": "Stir in tomato sauce and chicken stock; season with salt and pepper, to taste. Bring to a boil; reduce heat and simmer, stirring occasionally, until reduced and slightly thickened, about 10 minutes",
+          "optional": false
+        },
+        {
+          "instructions": "Stir in heavy cream until heated through, about 1 minute.",
+          "optional": false
+        },
+        {
+          "instructions": "Serve immediately with rice, garnished with cilantro, if desired.",
           "optional": true
         }
       ],
@@ -520,7 +562,7 @@
         "medium": "/img/temp_medium.jpg",
         "small": "/img/temp_small.jpg"
       },
-      "uuid": "p3a3lLO"
+      "uuid": "uRP9Fzy"
     }
   ],
   "specials": [

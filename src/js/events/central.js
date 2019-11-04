@@ -3,6 +3,7 @@ import RecipeManage from "../components/recipeManage";
 import RecipeProfile from "../components/recipeProfile";
 import RecipeModal from "../components/recipeModal";
 import RecordTemplate from "../components/recordTempate";
+import GenerateUUID from "../utility/uniqueID";
 import CrudEvent from "./crud";
 
 class CentralEvents {
@@ -264,6 +265,8 @@ class CentralEvents {
             child.classList.add("record-temp-field");
             inputList.appendChild(child);
           });
+          //unique id for each row
+          inputList.setAttribute("uuid", GenerateUUID());
           listMaster.appendChild(inputList);
           break;
         case "delrow":
@@ -311,6 +314,7 @@ class CentralEvents {
           [insText, insOptional].forEach(elem => {
             insList.appendChild(elem);
           });
+          insList.setAttribute("uuid", GenerateUUID());
           listMaster.appendChild(insList);
           break;
         case "delrow":

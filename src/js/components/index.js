@@ -2,6 +2,7 @@ import RecipeList from "./recipeList";
 import RecipeManage from "./recipeManage";
 import RecipeModal from "./recipeModal";
 import RecordTemplate from "./recordTempate";
+
 class ComponentMaster {
   init() {
     [

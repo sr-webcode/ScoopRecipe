@@ -1,3 +1,5 @@
+import GenerateUUID from "../utility/uniqueID";
+
 class RecordTemplate {
   constructor() {
     this.domCache();
@@ -185,6 +187,7 @@ class RecordTemplate {
       inputText.setAttribute("name", "name");
       inputAmt.setAttribute("name", "amount");
       inputMeasure.setAttribute("name", "measurement");
+      inputList.setAttribute("uuid", GenerateUUID());
 
       inputText.placeholder = "ingredient name...";
       inputAmt.value = 0;
@@ -194,6 +197,7 @@ class RecordTemplate {
         child.classList.add("record-temp-field");
         inputList.appendChild(child);
       });
+
       ingredientMasterContainer.appendChild(inputList);
     }
 
@@ -212,11 +216,7 @@ class RecordTemplate {
     });
 
     //fragment level append
-    const masterFragment = this.dataFragmenter(
-      this.existingRecord
-        ? [ingHeaderGroup, ingredientMasterContainer]
-        : [ingHeaderGroup, ingredientMasterContainer, addRowsBtn, delRowsBtn]
-    );
+    const masterFragment = this.dataFragmenter([ingHeaderGroup, ingredientMasterContainer, addRowsBtn, delRowsBtn]);
 
     this.recordIngView.appendChild(masterFragment);
   }
@@ -230,6 +230,7 @@ class RecordTemplate {
       delRowsBtn = document.createElement("span");
 
     if (this.existingRecord) {
+      
       //iterate through each direction
 
       const { directions } = objData;
@@ -240,20 +241,15 @@ class RecordTemplate {
           isTrue = document.createElement("option"),
           isFalse = document.createElement("option");
 
-        //set classnames
-
         insText.classList.add("record-temp-field");
         insOptional.classList.add("record-temp-field");
 
-        //set types
         insText.setAttribute("type", "text");
         insText.setAttribute("name", "instructions");
-        insOptional.setAttribute("name", "optional");
+        insOptional.setAttribute("name", "optional");       
 
-        //append data
         isTrue.textContent = "true";
         isFalse.textContent = "false";
-
         insText.value = each.instructions;
 
         [isTrue, isFalse].forEach(elem => {
@@ -284,6 +280,7 @@ class RecordTemplate {
       insText.setAttribute("type", "text");
       insText.setAttribute("name", "instructions");
       insOptional.setAttribute("name", "optional");
+      insList.setAttribute("uuid", GenerateUUID());
 
       isTrue.textContent = "true";
       isFalse.textContent = "false";
@@ -321,11 +318,7 @@ class RecordTemplate {
     dirHeaderGroup.appendChild(headerItems);
 
     //master data
-    const masterData = this.dataFragmenter(
-      this.existingRecord
-        ? [dirHeaderGroup, directionsMaster]
-        : [dirHeaderGroup, directionsMaster, addRowsBtn, delRowsBtn]
-    );
+    const masterData = this.dataFragmenter([dirHeaderGroup, directionsMaster, addRowsBtn, delRowsBtn]);
 
     this.recordStepView.appendChild(masterData);
   }
@@ -349,7 +342,7 @@ class RecordTemplate {
   clearTemplateData() {
     this.recordInitView.innerHTML = "";
     this.recordIngView.innerHTML = "";
-    this.recordStepView.innerHTML = "";    
+    this.recordStepView.innerHTML = "";
   }
 
   showNewTemplate() {
