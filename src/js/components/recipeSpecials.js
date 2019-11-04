@@ -1,4 +1,8 @@
 class RecipeSpecials {
+  constructor() {
+
+  }
+
   checkSpecials() {
     return new Promise((resolve, reject) => {
       const uri = "http://localhost:3001/specials";
@@ -19,6 +23,7 @@ class RecipeSpecials {
         });
     });
   }
+
 }
 
 export default RecipeSpecials;

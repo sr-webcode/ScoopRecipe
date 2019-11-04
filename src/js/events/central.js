@@ -44,7 +44,7 @@ class CentralEvents {
     this.recipeManageMenu = document.querySelector(
       ".recipe-manage > .container"
     );
-    this.modalAction = document.querySelector(".recipe-modal-act");
+    this.modalActions = document.querySelectorAll(".recipe-modal-act");
     this.recordTemplateControl = document.querySelector(".template-controls");
     this.tempViews = document.querySelectorAll("div[data-temp-role]");
     this.tempBackBtn = document.querySelector('span[data-out-role="back"]');
@@ -81,7 +81,9 @@ class CentralEvents {
     this.recipeManageMenu.addEventListener("click", this.menuControls);
 
     //modal responses
-    this.modalAction.addEventListener("click", this.modalResponse);
+    this.modalActions.forEach((action) => {
+      action.addEventListener("click", this.modalResponse);
+    })
 
     //template controls for add and edit for temp views
     this.recordTemplateControl.addEventListener("click", this.toggleTempViews);
@@ -156,6 +158,7 @@ class CentralEvents {
     const response = e.currentTarget.textContent.toLowerCase();
     switch (response) {
       case "yes":
+        console.log(`yess!!`)
         this.crudEvent.init(
           this.modalCurrentAction,
           this.modalCurrentRecord,
@@ -164,6 +167,7 @@ class CentralEvents {
         this.recipeModal.hide();
         break;
       case "no":
+        console.log(`woiii!`)
         this.recipeModal.hide();
         break;
       default:
@@ -244,8 +248,8 @@ class CentralEvents {
     const spanTarget = e.target.getAttribute("data-role");
     if (spanTarget) {
       const listMaster = e.target.parentElement.querySelector(
-          ".record-temp-master"
-        ),
+        ".record-temp-master"
+      ),
         inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
@@ -289,8 +293,8 @@ class CentralEvents {
     const spanTarget = e.target.getAttribute("data-role");
 
     const listMaster = e.target.parentElement.querySelector(
-        ".record-temp-master"
-      ),
+      ".record-temp-master"
+    ),
       insList = document.createElement("li"),
       insText = document.createElement("input"),
       insOptional = document.createElement("select"),
