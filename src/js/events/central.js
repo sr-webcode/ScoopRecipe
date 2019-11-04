@@ -158,7 +158,6 @@ class CentralEvents {
     const response = e.currentTarget.textContent.toLowerCase();
     switch (response) {
       case "yes":
-        console.log(`yess!!`)
         this.crudEvent.init(
           this.modalCurrentAction,
           this.modalCurrentRecord,
@@ -167,7 +166,6 @@ class CentralEvents {
         this.recipeModal.hide();
         break;
       case "no":
-        console.log(`woiii!`)
         this.recipeModal.hide();
         break;
       default:
