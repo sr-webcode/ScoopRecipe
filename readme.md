@@ -3,6 +3,7 @@
 ## About
 a simple recipe web app that allows you to view, edit, update and delete existing recipes. Data is pulled from a local json-server.
 
+
 ## Screenshots
 
 ![ScreenShot](/screenshots/xshotMain.png)
@@ -19,3 +20,5 @@ a simple recipe web app that allows you to view, edit, update and delete existin
 5. Read Project Notes(optional)
 ```
 
+
+note: this app is a constant work in progress.
