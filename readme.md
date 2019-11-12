@@ -2,7 +2,7 @@
 
 ## About
 a simple recipe web app that allows you to view, edit, update and delete existing recipes. Data is pulled from a local json-server.
-The best recipe web app there is in github!
+
 
 ## Screenshots
 
@@ -20,3 +20,5 @@ The best recipe web app there is in github!
 5. Read Project Notes(optional)
 ```
 
+
+note: this app is a constant work in progress.
