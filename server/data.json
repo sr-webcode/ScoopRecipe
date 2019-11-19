@@ -151,7 +151,7 @@
     },
     {
       "uuid": "3555aec3-47e1-44d4-b8f2-607aad5cee67",
-      "title": "Kielbasa Skillet",
+      "title": "Kielbasa Skillets",
       "description": "A polish wonderful delicacy.",
       "images": {
         "full": "/img/kielbasa_skillet.jpg",
@@ -319,7 +319,7 @@
     },
     {
       "uuid": "f8fc88dc-2f89-43fa-b431-00d90eeba521",
-      "title": "Pancake Mountain",
+      "title": "Pancake Mountains",
       "description": "A giant stack of pancakes to share or to horde.",
       "images": {
         "full": "/img/pancake_mountain.jpg",
@@ -346,25 +346,25 @@
         },
         {
           "uuid": "811a6f12-428e-4110-abcd-508e4080bc5c",
-          "name": "all-purpose flour",
+          "name": "all-purpose flours",
           "amount": 2,
           "measurement": "cups"
         },
         {
           "uuid": "28ed1238-648b-4559-a83c-5a2fb5f4ad25",
-          "name": "white sugar",
+          "name": "white sugars",
           "amount": 4,
           "measurement": "tablespoons"
         },
         {
           "uuid": "698345bd-078d-495f-b233-df1b756dd8a7",
-          "name": "baking powder",
+          "name": "baking powders",
           "amount": 2,
           "measurement": "teaspoons"
         },
         {
           "uuid": "6d4176cc-0c48-4e19-9d38-bb16578423a4",
-          "name": "baking soda",
+          "name": "baking sodas",
           "amount": 1,
           "measurement": "teaspoon"
         },
@@ -395,7 +395,7 @@
       ],
       "directions": [
         {
-          "instructions": "Combine milk with vinegar in a medium bowl and set aside for 5 minutes to \"sour\".",
+          "instructions": "Combine milk with vinegar in a medium bowl and set aside for 4 minutes to \"sour\".",
           "optional": false
         },
         {
@@ -404,7 +404,7 @@
         },
         {
           "instructions": "Heat a large skillet over medium heat, and coat with cooking spray. Pour 1/4 cupfuls of batter onto the skillet, and cook until bubbles appear on the surface. Flip with a spatula, and cook until browned on the other side.",
-          "optional": false
+          "optional": true
         }
       ]
     },
@@ -488,78 +488,56 @@
       ]
     },
     {
-      "title": "Chicken tikka masala",
-      "description": "Dish of chunks of roasted marinated chicken in a spiced curry sauce.",
+      "title": "Savory Chicken",
+      "description": "perfect recipe for month to end celebration",
       "prepTime": 10,
-      "cookTime": 35,
+      "cookTime": 40,
       "servings": 4,
       "ingredients": [
         {
-          "uuid": "v4p03cx6-sfax-rl85-jb2u-v70lj999320t",
-          "name": "basmati rice",
+          "uuid": "ktjq0mef-1350-4402-6mob-2ote449hp737",
+          "name": "chicken",
           "amount": 1,
-          "measurement": "cup"
+          "measurement": "whole"
         },
         {
-          "uuid": "k8jy77v6-honr-i30v-9tf1-eni9w5bs51l3",
-          "name": "canola oil",
-          "amount": 1,
-          "measurement": "table spoon"
-        },
-        {
-          "uuid": "61pd24fu-cx66-4388-l1uu-vjk085lq2ns2",
-          "name": "boneless chicken",
+          "uuid": "siqly634-726f-7w6w-d4ci-10f717q07w15",
+          "name": "savory marinade",
           "amount": 1.5,
-          "measurement": "pounds"
+          "measurement": "bowl"
         },
         {
-          "uuid": "t44adyc5-80pl-95d4-92jc-r62a05vmw6u6",
-          "name": "garlic",
-          "amount": 3,
-          "measurement": "cloves, minced"
-        },
-        {
-          "uuid": "x8l6hsf7-mbp6-fh52-89bd-llj9f65h72w1",
-          "name": "heavy cream",
-          "amount": 1.5,
-          "measurement": "cup"
-        },
-        {
-          "uuid": "al43541g-8017-uf94-s78b-u75r4etq67do",
-          "name": "chicken stock",
+          "uuid": "1n4lxo21-5614-9f43-5wv1-so5br047sva8",
+          "name": "cilantro spices",
           "amount": 1,
-          "measurement": "cup"
+          "measurement": "branch"
         },
         {
-          "uuid": "58280jsa-jy3j-on98-y0l7-b2b9u32tyd94",
-          "name": "cilantro leaves",
+          "uuid": "i148974o-dwph-o411-nf9i-ab56n50ti229",
+          "name": "hot sauce dip",
           "amount": 1,
-          "measurement": "strand, minced"
+          "measurement": "spoon"
         }
       ],
       "directions": [
         {
-          "instructions": "In a large saucepan of 2 cups water, cook rice according to package instructions; set aside.",
+          "instructions": "put bowl in chicken",
           "optional": false
         },
         {
-          "instructions": "Heat canola oil in a large stockpot or Dutch oven over medium heat. Season chicken with salt and pepper, to taste. Add chicken and onion to the stockpot and cook until golden, about 4-5 minutes.",
+          "instructions": "start marinading with savory sauce",
           "optional": false
         },
         {
-          "instructions": "Stir in tomato paste, garlic, ginger, garam masala, chili powder and turmeric until fragrant, about 1 minute.",
+          "instructions": "apply cilantro",
+          "optional": true
+        },
+        {
+          "instructions": "bake in oven at 300f temp",
           "optional": false
         },
         {
-          "instructions": "Stir in tomato sauce and chicken stock; season with salt and pepper, to taste. Bring to a boil; reduce heat and simmer, stirring occasionally, until reduced and slightly thickened, about 10 minutes",
-          "optional": false
-        },
-        {
-          "instructions": "Stir in heavy cream until heated through, about 1 minute.",
-          "optional": false
-        },
-        {
-          "instructions": "Serve immediately with rice, garnished with cilantro, if desired.",
+          "instructions": "slice chicken and serve in individual plates",
           "optional": true
         }
       ],
@@ -568,7 +546,7 @@
         "medium": "/img/temp_medium.jpg",
         "small": "/img/temp_small.jpg"
       },
-      "uuid": "uRP9Fzy"
+      "uuid": "LM4S~0j"
     }
   ],
   "specials": [

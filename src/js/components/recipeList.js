@@ -29,7 +29,11 @@ class RecipeList {
         return result.json();
       })
       .then(data => {
+
+
+        //if not using seachbar,--------
         if (!title) return this.extractList(data);
+
         const filterData = data.filter(recipe => {
           return recipe.title.toLowerCase().indexOf(title) != -1;
         });

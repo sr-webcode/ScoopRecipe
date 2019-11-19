@@ -127,6 +127,7 @@ class RecordTemplate {
   }
 
   ingredientsTemplate(data) {
+
     const ingHeaderGroup = document.createElement("ul"),
       ingHeader1 = document.createElement("li"),
       ingHeader2 = document.createElement("li"),

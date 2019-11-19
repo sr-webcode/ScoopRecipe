@@ -14,7 +14,7 @@ class CentralEvents {
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
     this.searchRecipe = this.searchRecipe.bind(this);
     this.menuControls = this.menuControls.bind(this);
-    this.toggleTempViews = this.toggleTempViews.bind(this);
+    this.toggleMenuViews = this.toggleMenuViews.bind(this);
     this.ingRowsAdd = this.ingRowsAdd.bind(this);
     this.stepRowsAdd = this.stepRowsAdd.bind(this);
     this.modalResponse = this.modalResponse.bind(this);
@@ -87,7 +87,7 @@ class CentralEvents {
     });
 
     //template controls for add and edit for temp views
-    this.recordTemplateControl.addEventListener("click", this.toggleTempViews);
+    this.recordTemplateControl.addEventListener("click", this.toggleMenuViews);
     //back btn
     this.tempBackBtn.addEventListener("click", () => {
       this.resetTempViews();
@@ -168,6 +168,7 @@ class CentralEvents {
         break;
       case "no":
         this.recipeModal.hide();
+
         break;
       default:
         console.log(`something went wrong`);
@@ -186,6 +187,7 @@ class CentralEvents {
       case "post":
         this.resetViews();
         this.resetTempViews();
+        this.tempMenu[0].classList.add('add-border');
         this.modalCurrentAction = target;
         this.tempViewName.textContent = "New Record";
         this.tempCrudBtn.setAttribute("data-crud-role", "post");
@@ -195,8 +197,10 @@ class CentralEvents {
         break;
 
       case "patch":
+
         this.resetViews();
         this.resetTempViews();
+        this.tempMenu[0].classList.add('add-border');
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;
         this.modalCategory = category;
@@ -210,6 +214,7 @@ class CentralEvents {
         break;
 
       case "delete":
+
         this.recipeModal.show(target, title);
         this.modalCurrentAction = target;
         this.modalCurrentRecord = id;
@@ -224,18 +229,19 @@ class CentralEvents {
     this.tempViews.forEach(view => {
       view.style.setProperty("display", "none");
     });
+    //reset borders as well
+    this.tempMenu.forEach(menu => {
+      menu.classList.remove("add-border");
+    });
   }
 
-  toggleTempViews(e) {
+  toggleMenuViews(e) {
     const role = e.target.getAttribute("data-temp-role");
     if (role) {
       this.resetTempViews();
       const currentTempView = document.querySelector(
         `div[data-temp-role='${role}']`
       );
-      this.tempMenu.forEach(menu => {
-        menu.classList.remove("add-border");
-      });
       e.target.classList.add("add-border");
       currentTempView.style.setProperty("display", "block");
     }
@@ -250,8 +256,8 @@ class CentralEvents {
     const spanTarget = e.target.getAttribute("data-role");
     if (spanTarget) {
       const listMaster = e.target.parentElement.querySelector(
-          ".record-temp-master"
-        ),
+        ".record-temp-master"
+      ),
         inputList = document.createElement("li"),
         inputText = document.createElement("input"),
         inputAmt = document.createElement("input"),
@@ -295,8 +301,8 @@ class CentralEvents {
     const spanTarget = e.target.getAttribute("data-role");
 
     const listMaster = e.target.parentElement.querySelector(
-        ".record-temp-master"
-      ),
+      ".record-temp-master"
+    ),
       insList = document.createElement("li"),
       insText = document.createElement("input"),
       insOptional = document.createElement("select"),
